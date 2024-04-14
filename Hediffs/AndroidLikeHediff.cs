@@ -6,7 +6,7 @@ using Verse;
 
 namespace Androids
 {
-    public class AndroidLikeHediff : Hediff
+    public class AndroidLikeHediff : HediffWithComps
     {
         public float energyTracked;
 

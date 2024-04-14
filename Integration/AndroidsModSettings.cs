@@ -51,6 +51,11 @@ namespace Androids.Integration
         /// </summary>
         public bool droidWearDownQuadrum = true;
 
+        public bool expensiveAndroids = false;
+        public bool costSizeScale = true;
+        public bool techTreeShuffling = false;
+        public float printTimeMult = 1.0f;
+        public int basePrintTime = 60000;
         public AndroidsModSettings()
         {
             AndroidsModSettings.Instance = this;
@@ -65,6 +70,11 @@ namespace Androids.Integration
             Scribe_Values.Look(ref droidDetonationConfirmation, "droidDetonationConfirmation", true);
             Scribe_Values.Look(ref droidWearDown, "droidWearDown", true);
             Scribe_Values.Look(ref droidWearDownQuadrum, "droidWearDownQuadrum", true);
+            Scribe_Values.Look(ref expensiveAndroids, "expensiveAndroids", false);
+            Scribe_Values.Look(ref costSizeScale, "costSizeScale", false);
+            Scribe_Values.Look(ref techTreeShuffling, "techTreeShuffling", false);
+            Scribe_Values.Look(ref printTimeMult, "printTimeMult", 1.0f);
+            Scribe_Values.Look(ref basePrintTime, "basePrintTime", 60000);
         }
     }
 }

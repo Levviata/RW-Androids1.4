@@ -26,7 +26,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\..\..\Program Files %28x86%29\Steam\steamapps\common\RimWorld\Mods\Androids\1.3\Assemblies\</OutputPath>
+    <OutputPath>..\Androids\1.4\Assemblies\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -36,13 +36,25 @@
     <Reference Include="0Harmony, Version=2.0.0.7, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\workshop\content\294100\2009463077\Current\Assemblies\0Harmony.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="AlienRace">
       <HintPath>..\..\..\..\workshop\content\294100\839005762\1.4\Assemblies\AlienRace.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Android Tiers Reforged">
+      <HintPath>..\..\..\..\workshop\content\294100\2917948202\1.4\Assemblies\Android Tiers Reforged.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="Mechanical Humanlikes Core">
+      <HintPath>..\..\..\..\workshop\content\294100\2974524016\1.4\Assemblies\Mechanical Humanlikes Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ShipsHaveInsides">
+      <HintPath>..\SaveOurShip2Experimental\1.4\Assemblies\ShipsHaveInsides.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -94,6 +106,7 @@
     <Compile Include="Defs\AndroidUpgradeDef.cs" />
     <Compile Include="Defs\AndroidUpgradeGroupDef.cs" />
     <Compile Include="Defs\DroidCraftingDef.cs" />
+    <Compile Include="Patches\HarmonyPatches2.cs" />
     <Compile Include="Hediffs\AndroidLikeHediff.cs" />
     <Compile Include="Hediffs\Hediff_BlackBox.cs" />
     <Compile Include="Hediffs\Hediff_LoverMentality.cs" />
@@ -104,6 +117,7 @@
     <Compile Include="Logic\DroidSkill.cs" />
     <Compile Include="Logic\IExtraDisplayStats.cs" />
     <Compile Include="Logic\IExtraGizmos.cs" />
+    <Compile Include="Patches\SOS.cs" />
     <Compile Include="StatParts\AndroidValueStatPart.cs" />
     <Compile Include="ThingComp\CompProperties_EnergyTracker.cs" />
     <Compile Include="ThingComp\CompUseEffect_SpawnCustomDroid.cs" />
@@ -116,13 +130,15 @@
     <Compile Include="UI\AndroidCustomizationTweaks.cs" />
     <Compile Include="UI\Gizmos\Gizmo_EnergySourceFueled.cs" />
     <Compile Include="Utilities\AndroidUtility.cs" />
+    <Compile Include="Utilities\MH.cs" />
+    <Compile Include="Utilities\ATR.cs" />
     <Compile Include="Utilities\ButcherUtility.cs" />
     <Compile Include="DefOf\DamageDefOf.cs" />
     <Compile Include="Utilities\DroidUtility.cs" />
     <Compile Include="EffectTextures.cs" />
     <Compile Include="Utilities\EnergyNeedUtility.cs" />
     <Compile Include="Utilities\ExtraRendering.cs" />
-    <Compile Include="HarmonyPatches.cs" />
+    <Compile Include="Patches\HarmonyPatches.cs" />
     <Compile Include="DefOf\HediffDefOf.cs" />
     <Compile Include="HediffGiver\HediffGiver_Machine.cs" />
     <Compile Include="HediffGiver\HediffGiver_Machinelike.cs" />
@@ -140,6 +156,7 @@
     <Compile Include="PostDefFixer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\FuelUtility.cs" />
+    <Compile Include="Utilities\ModChecker.cs" />
     <Compile Include="Utilities\RaceUtility.cs" />
     <Compile Include="Utilities\ReflectionUtility.cs" />
     <Compile Include="ThingComp\CompProperties_EnergySource.cs" />
@@ -169,6 +186,7 @@
     <Compile Include="Workers\Recipe_RepairKit.cs" />
     <Compile Include="Workers\ThoughtWorker_DroidAlways.cs" />
     <Compile Include="Workers\ThoughtWorker_LoverMentality.cs" />
+    <Compile Include="Workers\ThoughtWorker_transhumanist.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

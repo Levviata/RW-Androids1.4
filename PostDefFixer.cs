@@ -1,4 +1,6 @@
 ﻿using AlienRace;
+using Androids.Integration;
+using Androids.Utilities;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -29,6 +31,12 @@ namespace Androids
                         Log.Message("Androids: Removed '" + removedNum + "' recipes for Droids.");
                     }
                 }
+            }
+
+            ResearchProjectDef printer =DefDatabase<ResearchProjectDef>.AllDefs.SingleOrDefault(t => t.defName == "ChJAndroidPrinter");
+            if(AndroidsModSettings.Instance.techTreeShuffling &&  printer != null && ( ModChecker.HasMH()||ModChecker.HasATR()))
+            {
+                printer.prerequisites.Add(DefDatabase<ResearchProjectDef>.AllDefs.SingleOrDefault(t => t.defName == "ATR_T4Androids"));
             }
 
             Log.Message("Androids: Fixing belts whitelist for AlienRace.ThingDef_AlienRace with defName='ChjBattleDroid'.");

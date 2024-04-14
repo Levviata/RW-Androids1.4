@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using Androids.Integration;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -104,7 +105,7 @@ namespace Androids
                 }
                 else
                 {
-                    return ((float)((float)printerProperties.ticksToCraft - craftingTicksLeft) / (float)printerProperties.ticksToCraft);
+                    return ((float)((float)AndroidsModSettings.Instance.basePrintTime - craftingTicksLeft) / (float)AndroidsModSettings.Instance.basePrintTime);
                 }
             }
         }
@@ -122,7 +123,7 @@ namespace Androids
                 }
                 else
                 {
-                    return printerProperties.ticksToCraft;
+                    return AndroidsModSettings.Instance.basePrintTime;
                 }
             }
         }

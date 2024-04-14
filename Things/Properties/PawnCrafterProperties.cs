@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using Androids.Integration;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,7 +71,8 @@ namespace Androids
         /// <summary>
         /// How many ticks are required to craft the pawn.
         /// </summary>
-        public int ticksToCraft = 60000;
+        //public int ticksToCraft = 60000;
+
 
         /// <summary>
         /// How often a "resource" tick happen in which resources are deducted from internal storage.
@@ -123,7 +125,7 @@ namespace Androids
         /// <returns>Resource ticks.</returns>
         public float ResourceTicks()
         {
-            return (float)Math.Ceiling((double)ticksToCraft / resourceTick);
+            return (float)Math.Ceiling((double)AndroidsModSettings.Instance.basePrintTime / resourceTick);
         }
     }
 }

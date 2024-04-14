@@ -295,9 +295,9 @@ namespace Androids
             string finalLongName = String.Format("D-{0:X}-{1:X}", Rand.Range(0, 256), Rand.Range(0, 256));
 
             if(nickName == null)
-                return new NameTriple(finalLongName, finalLongName, "");
+                return new NameTriple(finalLongName, "", finalLongName);
             else
-                return new NameTriple(finalLongName, nickName, "");
+                return new NameTriple(finalLongName,"", nickName);
         }
 
         public static void DoTend(Pawn doctor, Pawn patient, Thing medicine)

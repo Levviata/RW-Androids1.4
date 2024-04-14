@@ -2,8 +2,4 @@
 *.ide
 *.lock
 *.vs
-obj/Debug/Androids.dll
-obj/Debug/Androids.csproj.CoreCompileInputs.cache
-obj/Debug/Androids.csproj.FileListAbsolute.txt
-obj/Debug/Androids.csprojAssemblyReference.cache
-obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/obj/**

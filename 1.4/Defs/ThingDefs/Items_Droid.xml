@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- Consumables -->
+	<ThingDef ParentName="ResourceBase">
+		<defName>ChjAndroidBattery</defName>
+		<label>droid battery</label>
+		<description>Consumable batteries compatible for use for Androids and Droids.</description>
+		<graphicData>
+			<texPath>Things/Item/DroidBattery</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<statBases>
+			<MarketValue>10</MarketValue>
+			<Mass>0.025</Mass>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>2.0</DeteriorationRate>
+		</statBases>
+		<recipeMaker>
+			<researchPrerequisite>ChJAndroidDroidBatteries</researchPrerequisite>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+			<workAmount>800</workAmount>
+			<targetCountAdjustment>5</targetCountAdjustment>
+			<productCount>5</productCount>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>TableMachining</li>
+			</recipeUsers>
+		</recipeMaker>
+		<costList>
+			<Steel>40</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="Androids.CompProperties_EnergySource">
+				<isConsumable>true</isConsumable>
+				<energyWhenConsumed>0.25</energyWhenConsumed>
+			</li>
+		</comps>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>ChjDroidRepairParts</defName>
+		<label>droid repair parts</label>
+		<description>Miscellanous droid parts, adhesives, solder, welding resources &amp; metal plates for repairing droids.</description>
+		<graphicData>
+			<texPath>Things/Item/DroidRepairParts</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<statBases>
+			<MarketValue>17</MarketValue>
+			<Mass>0.5</Mass>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>2.0</DeteriorationRate>
+		</statBases>
+		<recipeMaker>
+			<researchPrerequisite>ChJAndroidDroidRepairParts</researchPrerequisite>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+			<workAmount>300</workAmount>
+			<productCount>3</productCount>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>TableMachining</li>
+			</recipeUsers>
+		</recipeMaker>
+		<costList>
+			<Steel>10</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<modExtensions>
+			<li Class="Androids.DroidRepairProperties"/>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>ChjDroidRepairKit</defName>
+		<label>droid repair kit</label>
+		<description>A repair kit containing the tools and materials, to fully restore a Droid to mint condition, from wear and tear to missing parts. Also refills coolant on Droids and Androids.\n\nUsed as a operation.</description>
+		<graphicData>
+			<texPath>Things/Item/DroidRepairKit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<statBases>
+			<MarketValue>222</MarketValue>
+			<Mass>0.5</Mass>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>2.0</DeteriorationRate>
+		</statBases>
+		<recipeMaker>
+			<researchPrerequisite>ChJAndroidDroidRepairKit</researchPrerequisite>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+			<workAmount>1200</workAmount>
+			<productCount>1</productCount>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>TableMachining</li>
+			</recipeUsers>
+		</recipeMaker>
+		<costList>
+			<Steel>100</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</ThingDef>
+
+	<!-- Solar Apparell	 -->
+	<ThingDef ParentName="ApparelMakeableBase">
+		<defName>ChjAndroid_SolarDuster</defName>
+		<description>A long duster coat for blocking the sun and grit of the desert. Now with solarpanels for long journeys and passive power generation at home.</description>
+		<label>droid solarpanel duster</label>
+		<recipeMaker>
+			<researchPrerequisite>ChJAndroidSolarpanelApparel</researchPrerequisite>
+		</recipeMaker>
+		<graphicData>
+			<texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.05</drawSize>
+		</graphicData>
+		<costStuffCount>80</costStuffCount>
+		<costList>
+			<Steel>20</Steel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<stuffCategories>
+			<li>Fabric</li>
+			<li>Leathery</li>
+		</stuffCategories>
+		<thingCategories>
+			<li>Apparel</li>
+		</thingCategories>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToMake>26000</WorkToMake>
+			<Mass>2.2</Mass>
+			<StuffEffectMultiplierArmor>0.3</StuffEffectMultiplierArmor>
+			<StuffEffectMultiplierInsulation_Cold>0.60</StuffEffectMultiplierInsulation_Cold>
+			<StuffEffectMultiplierInsulation_Heat>0.85</StuffEffectMultiplierInsulation_Heat>
+			<EquipDelay>2.5</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.08</MoveSpeed>
+		</equippedStatOffsets>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath>
+			<layers>
+				<li>Shell</li>
+			</layers>
+			<defaultOutfitTags>
+				<li>Worker</li>
+			</defaultOutfitTags>
+		</apparel>
+		<comps>
+			<li Class="Androids.CompProperties_EnergySource">
+				<compClass>Androids.EnergySource_SolarComp</compClass>
+				<passiveEnergyGeneration>0.003</passiveEnergyGeneration>
+			</li>
+		</comps>
+		<colorGenerator Class="ColorGenerator_Options">
+			<options>
+				<li>
+					<weight>10</weight>
+					<only>RGBA(0.33,0.33,0.33,1)</only>
+				</li>
+				<li>
+					<weight>10</weight>
+					<only>RGBA(0.65,0.65,0.65,1)</only>
+				</li>
+				<li>
+					<weight>30</weight>
+					<only>RGBA(0.4,0.3,0.15,1)</only>
+				</li>
+				<li>
+					<weight>6</weight>
+					<min>RGBA(0.3,0.3,0.3,1)</min>
+					<max>RGBA(0.5,0.5,0.5,1)</max>
+				</li>
+				<li>
+					<weight>2</weight>
+					<min>RGBA(0.5,0.5,0.5,1)</min>
+					<max>RGBA(1,1,1,1)</max>
+				</li>
+			</options>
+		</colorGenerator>
+	</ThingDef>
+
+	<!-- Chemfuel generator -->
+	<ThingDef ParentName="ArmorMachineableBase">
+		<defName>ChjAndroid_ChemfuelGenerator</defName>
+		<label>droid chemfuel generator belt</label>
+		<description>A portable chemfuel generator which can be worn by Droids and Androids alike. Lasts for days on a single tank.</description>
+		<thingClass>Androids.ApparelWithGizmos</thingClass>
+		<graphicData>
+			<texPath>Things/Pawn/Humanlike/Apparel/ShieldBelt/ShieldBelt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<tickerType>Normal</tickerType>
+		<statBases>
+			<Mass>5</Mass>
+			<WorkToMake>12000</WorkToMake>
+			<Flammability>0.4</Flammability>
+		</statBases>
+		<costList>
+			<ComponentIndustrial>3</ComponentIndustrial>
+			<Steel>30</Steel>
+		</costList>
+		<comps>
+			<li Class="Androids.CompProperties_EnergySource">
+				<compClass>Androids.EnergySource_Fueled</compClass>
+				<activeEnergyGeneration>0.006</activeEnergyGeneration>
+				<maxFuelAmount>150</maxFuelAmount>
+				<!-- Per 150 ticks, should translate into 35 fuel per day.
+				Formula: (35 / 60000) * 150 -->
+				<fuelAmountUsedPerInterval>0.0875</fuelAmountUsedPerInterval>
+				<fuels>
+					<Chemfuel>2</Chemfuel>
+				</fuels>
+				<refillJob>ChJAndroidRefillPowerSource</refillJob>
+			</li>
+		</comps>
+		<recipeMaker>
+			<unfinishedThingDef>UnfinishedBelt</unfinishedThingDef>
+			<researchPrerequisite>ChJAndroidPortableChemfuelGenerator</researchPrerequisite>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+			<recipeUsers>
+				<li>TableMachining</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>4</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<thingCategories>
+			<li>Apparel</li>
+		</thingCategories>
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<bodyPartGroups>
+				<li>Waist</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+		</apparel>
+		<colorGenerator Class="ColorGenerator_Options">
+			<options>
+				<li>
+					<weight>10</weight>
+					<only>RGBA(0.33,0.33,0.33,1)</only>
+				</li>
+				<li>
+					<weight>10</weight>
+					<only>RGBA(0.65,0.65,0.65,1)</only>
+				</li>
+				<li>
+					<weight>6</weight>
+					<min>RGBA(0.3,0.3,0.3,1)</min>
+					<max>RGBA(0.5,0.5,0.5,1)</max>
+				</li>
+				<li>
+					<weight>10</weight>
+					<only>RGBA(0.9,0.9,0.9,1)</only>
+				</li>
+			</options>
+		</colorGenerator>
+	</ThingDef>
+</Defs>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Research Tabs -->
+	<ResearchTabDef>
+		<defName>ChjAndroid</defName>
+		<label>Androids</label>
+	</ResearchTabDef>
+
+	<!-- Misc -->
+	<ResearchProjectDef>
+		<defName>ChJAndroidDroidRepairParts</defName>
+		<tab>ChjAndroid</tab>
+		<label>droid repair parts</label>
+		<description>Allows colonists to manufacture repair parts to repair damaged droids. Can't fix missing body parts.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>Machining</li>
+		</prerequisites>
+		<researchViewX>0</researchViewX>
+		<researchViewY>1</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>ChJAndroidDroidRepairKit</defName>
+		<tab>ChjAndroid</tab>
+		<label>droid repair kits</label>
+		<description>Allows colonists to manufacture repair kits to repair Droids to mint condition. And also refill coolant for both Droids and Androids.</description>
+		<baseCost>600</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>ChJAndroidDroidRepairParts</li>
+			<li>BiofuelRefining</li>
+		</prerequisites>
+		<researchViewX>1</researchViewX>
+		<researchViewY>1</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>ChJAndroidSolarpanelApparel</defName>
+		<tab>ChjAndroid</tab>
+		<label>solarpanel apparell</label>
+		<description>Allows colonists to tailor apparell with integrated solarpanels in them. Like a duster.</description>
+		<baseCost>500</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>ComplexClothing</li>
+			<li>SolarPanels</li>
+		</prerequisites>
+		<researchViewX>0</researchViewX>
+		<researchViewY>2</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>ChJAndroidPortableChemfuelGenerator</defName>
+		<tab>ChjAndroid</tab>
+		<label>portable chemfuel generator</label>
+		<description>Allows colonists to manufacture portable chemfuel generators for their Droids and Androids. Permitting them to explore for days outside the colony.</description>
+		<baseCost>1000</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>BiofuelRefining</li>
+			<li>MicroelectronicsBasics</li>
+		</prerequisites>
+		<researchViewX>1</researchViewX>
+		<researchViewY>2</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>ChJAndroidDroidBatteries</defName>
+		<tab>ChjAndroid</tab>
+		<label>droid batteries</label>
+		<description>Allows colonists to manufacture portable batteries which can be used while out abroad or in emergencies.</description>
+		<baseCost>500</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>Batteries</li>
+		</prerequisites>
+		<researchViewX>0</researchViewX>
+		<researchViewY>3</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>ChJAndroidMaidDress</defName>
+		<tab>ChjAndroid</tab>
+		<label>maid uniform</label>
+		<description>Allows colonists to tailor cute apparell. Androids have taken a liking to these outfits.</description>
+		<baseCost>300</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>ComplexClothing</li>
+		</prerequisites>
+		<researchViewX>0</researchViewX>
+		<researchViewY>4</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>ChJAndroidSpacerMaidDress</defName>
+		<tab>ChjAndroid</tab>
+		<label>combat maid uniform</label>
+		<description>Allows colonists to tailor cute apparell that is usable in combat. Androids on glitterworlds who serve masters in high places are usually wearing these. Combining charm with practical elements.</description>
+		<baseCost>1000</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>ChJAndroidMaidDress</li>
+			<li>PoweredArmor</li>
+		</prerequisites>
+		<researchViewX>3</researchViewX>
+		<researchViewY>4</researchViewY>
+	</ResearchProjectDef>
+
+	<!-- Pawn Crafters -->
+	<ResearchProjectDef>
+		<defName>ChJDroidPrinter</defName>
+		<tab>ChjAndroid</tab>
+		<label>worker droids</label>
+		<description>Allows colonists to construct Droid fabriactors which when supplied with, steel and components will produce dumb but servicable robotic servants. What they lack in future career prospects they make up for their ease of production and replacability. However they must be fixed with repair parts or repair kits.</description>
+		<baseCost>2000</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>BiofuelRefining</li>
+			<li>MicroelectronicsBasics</li>
+			<li>Batteries</li>
+		</prerequisites>
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+		<researchViewX>1</researchViewX>
+		<researchViewY>3</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>ChJBattleDroid</defName>
+		<tab>ChjAndroid</tab>
+		<label>battle droids</label>
+		<description>Allows for the construction of battle oriented droids. They are very tough, can use almost any weapon professionally but can't do any work besides hauling.</description>
+		<baseCost>2000</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>ChJDroidPrinter</li>
+		</prerequisites>
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+		</requiredResearchFacilities>
+		<researchViewX>2</researchViewX>
+		<researchViewY>2</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>ChJAndroidPrinter</defName>
+		<tab>ChjAndroid</tab>
+		<label>android printer</label>
+		<description>Allows colonists to construct Android Printers which when supplied with, living matter, plasteel and components print out customized Androids for the colony. The ultimate manpower shortage solution.</description>
+		<baseCost>3000</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>ChJDroidPrinter</li>
+			<li>Cryptosleep</li>
+			<li>AdvancedFabrication</li>
+		</prerequisites>
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+		</requiredResearchFacilities>
+		<researchViewX>3</researchViewX>
+		<researchViewY>3</researchViewY>
+	</ResearchProjectDef>
+
+	<!-- Upgrades -->
+	<ResearchProjectDef>
+		<defName>ChJAndroidUpgrade_Hub</defName>
+		<tab>ChjAndroid</tab>
+		<label>android upgrades basics</label>
+		<description>Allows upgrading your Androids at the body creation and mind imprinting stage to permanently improve them beyond normal means.</description>
+		<baseCost>1000</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>ChJAndroidPrinter</li>
+		</prerequisites>
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+		</requiredResearchFacilities>
+		<researchViewX>4</researchViewX>
+		<researchViewY>3</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>ChJAndroidUpgrade_Physique</defName>
+		<tab>ChjAndroid</tab>
+		<label>physique module</label>
+		<description>Unlocks the secrets to perfecting the form of your Androids. Make them stronger, faster and better!</description>
+		<baseCost>2000</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>ChJAndroidUpgrade_Hub</li>
+		</prerequisites>
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+		</requiredResearchFacilities>
+		<researchViewX>4</researchViewX>
+		<researchViewY>2</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>ChJAndroidUpgrade_Skin</defName>
+		<tab>ChjAndroid</tab>
+		<label>skin module</label>
+		<description>Unlocks the secrets to perfecting the synthetic skin of your Androids. Improves the durability of your Androids. Also can come with other perks.</description>
+		<baseCost>2000</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>ChJAndroidUpgrade_Hub</li>
+		</prerequisites>
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+		</requiredResearchFacilities>
+		<researchViewX>4</researchViewX>
+		<researchViewY>4</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>ChJAndroidUpgrade_Utility</defName>
+		<tab>ChjAndroid</tab>
+		<label>utility module</label>
+		<description>Unlocks the secrets to improving your Androids in every way possible. From installing a vanometric cell rendering your Android immune to the need of food and energy to more mundane tools.</description>
+		<baseCost>2000</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>ChJAndroidUpgrade_Hub</li>
+		</prerequisites>
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+		</requiredResearchFacilities>
+		<researchViewX>5</researchViewX>
+		<researchViewY>2</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>ChJAndroidUpgrade_Proficency</defName>
+		<tab>ChjAndroid</tab>
+		<label>proficency module</label>
+		<description>Unlocks the secrets to improving your Androids work speed and efficency. Further augment your Androids skillset with these.</description>
+		<baseCost>2000</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>ChJAndroidUpgrade_Hub</li>
+		</prerequisites>
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+		</requiredResearchFacilities>
+		<researchViewX>5</researchViewX>
+		<researchViewY>4</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>ChJAndroidUpgrade_Archotech</defName>
+		<tab>ChjAndroid</tab>
+		<label>archotech module</label>
+		<description>Unlocks the ultimate upgrade to an Android. The ability to fully integrate a Archotech AI in form of the Persona Core into its synthetic frame. Have we gone too far?</description>
+		<baseCost>3000</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>ChJAndroidUpgrade_Hub</li>
+		</prerequisites>
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+		</requiredResearchFacilities>
+		<researchViewX>6</researchViewX>
+		<researchViewY>3</researchViewY>
+	</ResearchProjectDef>
+</Defs>

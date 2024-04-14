@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<Androids.DroidCraftingDef>
+		<defName>Android_Droid</defName>
+		<label>Worker Droid</label>
+		<orderID>0</orderID>
+		<costList>
+			<Steel>225</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
+		</costList>
+		<timeCost>15000</timeCost>
+		<pawnKind>ChjDroidColonist</pawnKind>
+	</Androids.DroidCraftingDef>
+
+	<Androids.DroidCraftingDef>
+		<defName>Android_BattleDroid</defName>
+		<label>Battle Droid</label>
+		<orderID>1</orderID>
+		<costList>
+			<Steel>500</Steel>
+			<ComponentIndustrial>18</ComponentIndustrial>
+		</costList>
+		<timeCost>60000</timeCost>
+		<pawnKind>ChjBattleDroidColonist</pawnKind>
+		<requiredResearch>ChJBattleDroid</requiredResearch>
+	</Androids.DroidCraftingDef>
+</Defs>

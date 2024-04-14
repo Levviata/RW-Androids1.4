@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<ThingDef Abstract="True" Name="ChjAndroidMaidoutfit" ParentName="ApparelMakeableBase">
+		<thingClass>Apparel</thingClass>
+		<category>Item</category>
+		<selectable>True</selectable>
+		<pathCost>10</pathCost>
+		<useHitPoints>True</useHitPoints>
+		<techLevel>Medieval</techLevel>
+		<graphicData>
+			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+		</graphicData>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<statBases>
+			<MaxHitPoints>80</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>2</DeteriorationRate>
+			<Beauty>-1</Beauty>
+			<SellPriceFactor>0.70</SellPriceFactor>
+		</statBases>
+		<altitudeLayer>Item</altitudeLayer>
+		<alwaysHaulable>True</alwaysHaulable>
+		<tickerType>Never</tickerType>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+		</comps>
+		<tradeability>Buyable</tradeability>
+	</ThingDef>
+
+	<ThingDef Abstract="True" Name="ChjAndroidMaidMakeableoutfit" ParentName="ChjAndroidMaidoutfit">
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Tailor</effectWorking>
+			<soundWorking>Recipe_Tailor</soundWorking>
+			<recipeUsers>
+				<li>ElectricTailoringBench</li>
+				<li>HandTailoringBench</li>
+			</recipeUsers>
+			<unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+		</recipeMaker>
+	</ThingDef>
+
+	<!--=================================================================-->
+	<ThingDef ParentName="ChjAndroidMaidMakeableoutfit">
+		<defName>ChjAndroidMaidOutfit</defName>
+		<label>maid dress</label>
+		<description>Based off the traditional maid outfit, the broad apron and attractive cuffs disguise small motors that assist in cleaning and other common household tasks. Popular with the Urbworld elite who wish to preserve traditional charm while pragmatically utilizing technology to enhance their staff.</description>
+		<techLevel>Medieval</techLevel>
+		<recipeMaker>
+			<unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+			<researchPrerequisite>ChJAndroidMaidDress</researchPrerequisite>
+		</recipeMaker>
+		<graphicData>
+			<texPath>Things/Item/Pawn/Humanlike/Apparel/maidoutfit/maidoutfit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>15000</WorkToMake>
+			<MaxHitPoints>120</MaxHitPoints>
+			<Mass>3</Mass>
+			<StuffEffectMultiplierArmor>0.3</StuffEffectMultiplierArmor>
+			<StuffEffectMultiplierInsulation_Cold>0.7</StuffEffectMultiplierInsulation_Cold>
+			<StuffEffectMultiplierInsulation_Heat>0.7</StuffEffectMultiplierInsulation_Heat>
+			<!--ArmorRating_Blunt>0.10</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.2</ArmorRating_Sharp>
+			<ArmorRating_Heat>0.05</ArmorRating_Heat-->
+		</statBases>
+		<thingCategories>
+			<li>Apparel</li>
+		</thingCategories>
+		<equippedStatOffsets>
+			<MoveSpeed>0.1</MoveSpeed>
+			<FoodPoisonChance>-0.25</FoodPoisonChance>
+			<WorkSpeedGlobal>0.1</WorkSpeedGlobal>
+		</equippedStatOffsets>
+		<costStuffCount>80</costStuffCount>
+		<stuffCategories>
+			<li>Fabric</li>
+			<li>Leathery</li>
+		</stuffCategories>
+		<costList>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<generateCommonality>20</generateCommonality>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+				<li>Neck</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Things/Item/Pawn/Humanlike/Apparel/maidoutfit/maidoutfit</wornGraphicPath>
+			<layers>
+				<li>Shell</li>
+			</layers>
+			<tags>
+				<li>Maid</li>
+			</tags>
+		</apparel>
+		<!--colorGenerator Class="ColorGenerator_Single">
+			<color>RGBA(1.0,1.0,1.0,1.0)</color>
+		</colorGenerator-->
+	</ThingDef>
+
+	<ThingDef ParentName="ChjAndroidMaidMakeableoutfit">
+		<defName>ChjAndroidMaidBattleDress</defName>
+		<label>battle dress</label>
+		<description>A charming combination of a light plasteel exo-skeleton and devilstrand-reinforced uniform with a sassy skirt. Female combat androids favor this style, which accentuates combat methodology: speed and overwhelming aggression.</description>
+		<techLevel>Spacer</techLevel>
+		<recipeMaker>
+			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+			<researchPrerequisite>ChJAndroidSpacerMaidDress</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>7</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<graphicData>
+			<texPath>Things/Item/Pawn/Humanlike/Apparel/battledress/militarymaid</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>30000</WorkToMake>
+			<MaxHitPoints>240</MaxHitPoints>
+			<Mass>3</Mass>
+			<ArmorRating_Sharp>0.70</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.35</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.35</ArmorRating_Heat>
+			<!--ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.4</ArmorRating_Sharp>
+			<Insulation_Cold>-15</Insulation_Cold>
+			<Insulation_Heat>15</Insulation_Heat-->
+		</statBases>
+		<thingCategories>
+			<li>Apparel</li>
+		</thingCategories>
+		<equippedStatOffsets>
+			<MoveSpeed>1.0</MoveSpeed>
+			<AimingDelayFactor>-0.2</AimingDelayFactor>
+		</equippedStatOffsets>
+		<costList>
+			<DevilstrandCloth>75</DevilstrandCloth>
+			<Plasteel>25</Plasteel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<generateCommonality>20</generateCommonality>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Neck</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Things/Item/Pawn/Humanlike/Apparel/battledress/militarymaid</wornGraphicPath>
+			<layers>
+				<li>Shell</li>
+			</layers>
+			<tags>
+				<li>Maid</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>Soldier</li>
+			</defaultOutfitTags>
+		</apparel>
+		<colorGenerator Class="ColorGenerator_Single">
+			<color>RGBA(1.0,1.0,1.0,1.0)</color>
+		</colorGenerator>
+	</ThingDef>
+
+	<!-- Hats -->
+	<ThingDef ParentName="HatMakeableBase">
+		<defName>ChjAndroidBattleMaidHat</defName>
+		<label>battle maid hat</label>
+		<description>A traditional looking maid hat with a military theme. Comes with a headset for communicating with allies.</description>
+		<techLevel>Spacer</techLevel>
+		<graphicData>
+			<texPath>Things/Item/Pawn/Humanlike/Apparel/battlemaidhat/Battlemaid</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>3200</WorkToMake>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>2</Mass>
+			<ArmorRating_Sharp>0.20</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.20</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.10</ArmorRating_Heat>
+			<EquipDelay>2.5</EquipDelay>
+		</statBases>
+		<costList>
+			<DevilstrandCloth>25</DevilstrandCloth>
+			<Plasteel>10</Plasteel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>ChJAndroidSpacerMaidDress</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>6</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<apparel>
+			<bodyPartGroups>
+				<li>UpperHead</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Things/Item/Pawn/Humanlike/Apparel/battlemaidhat/Battlemaid</wornGraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<tags>
+				<li>Maid</li>
+			</tags>
+			<defaultOutfitTags>
+				<li>Soldier</li>
+			</defaultOutfitTags>
+		</apparel>
+		<colorGenerator Class="ColorGenerator_Single">
+			<color>RGBA(1.0,1.0,1.0,1.0)</color>
+		</colorGenerator>
+		<tradeability>Buyable</tradeability>
+	</ThingDef>
+</Defs>
+

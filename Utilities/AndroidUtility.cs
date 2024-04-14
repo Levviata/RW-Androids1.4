@@ -1,4 +1,5 @@
 ﻿using AlienRace;
+using Androids.Utilities;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -24,37 +25,36 @@ namespace Androids
             PortraitsCache.PortraitsCacheUpdate();
 
             //Add Android Hediff.
-            pawn.health.AddHediff(HediffDefOf.ChjAndroidLike);
+              if (ModChecker.HasMH())
+            {
+                if (!MH.IsMHAndroid(pawn))
+                {
+                    pawn.health.AddHediff(HediffDefOf.ChjAndroidLike);
+                }
+            }
+            else if (ModChecker.HasATR())
+            {
+                if (!ATR.IsATAndroid(pawn))
+                {
+                    pawn.health.AddHediff(HediffDefOf.ChjAndroidLike);
+                }
+            }
+            else
+            {
+                pawn.health.AddHediff(HediffDefOf.ChjAndroidLike);
+            }
 
             //Remove old wounds and bad birthday related ones.
             List<Hediff> hediffs = pawn.health.hediffSet.hediffs.ToList();
             foreach (Hediff hediff in hediffs)
             {
-                if (hediff is Hediff_Injury injury && injury.IsPermanent())
+                if (hediff.def.isBad)
                 {
-                    pawn.health.hediffSet.hediffs.Remove(injury);
-                    injury.PostRemoved();
-                    pawn.health.Notify_HediffChanged(null);
-                }
-                else if (
-                   pawn.def.race.hediffGiverSets.Any(
-                       setDef => setDef.hediffGivers.Any(
-                           hediffGiver => hediffGiver is HediffGiver_Birthday birthday && birthday.hediff == hediff.def &&
-                           (birthday.hediff.stages?.Any(
-                               stage =>
-                               (stage.capMods?.Any(cap => cap.offset < 0f) ?? false) ||
-                               stage.lifeThreatening ||
-                               stage.partEfficiencyOffset < 0f ||
-                               (stage.statOffsets?.Any(stat => stat.value < 0f) ?? false) ||
-                               stage.painOffset > 0f ||
-                               stage.painFactor > 1f) ?? false))))
-                {
-                    //Log.Message("Bad Birthday Hediff Removed: " + hediff.LabelCap);
-                    pawn.health.hediffSet.hediffs.Remove(hediff);
-                    hediff.PostRemoved();
+                    pawn.health.RemoveHediff(hediff);
                     pawn.health.Notify_HediffChanged(null);
                 }
             }
         }
+
     }
 }

@@ -21,6 +21,8 @@ namespace Androids.Integration
         /// Used for the text for the setting.
         /// </summary>
         private string explosionRadiusBuffer = "3.5";
+        private string printTimeMult = "1.0";
+        private string basePrintTime = "60000";
 
         public Androids(ModContentPack content) : base(content)
         {
@@ -31,6 +33,8 @@ namespace Androids.Integration
             if(AndroidsModSettings.Instance != null)
             {
                 explosionRadiusBuffer = AndroidsModSettings.Instance.androidExplosionRadius.ToString();
+                printTimeMult = AndroidsModSettings.Instance.printTimeMult.ToString();
+                basePrintTime = AndroidsModSettings.Instance.basePrintTime.ToString();
             }
         }
 
@@ -103,6 +107,46 @@ namespace Androids.Integration
 
                 //Toggle for whether Androids explode or not.
                 Widgets.CheckboxLabeled(rowRect, "AndroidSettingsDroidWearDownQuadrum".Translate(), ref AndroidsModSettings.Instance.droidWearDownQuadrum);
+            }
+            {
+                Rect rowRect = UIHelper.GetRowRect(ininRect, rowHeight, row);
+                row++;
+
+                
+                Widgets.CheckboxLabeled(rowRect, "expensiveAndroids".Translate(), ref AndroidsModSettings.Instance.expensiveAndroids);
+                TooltipHandler.TipRegion(rowRect, "expensiveAndroidsTooltip".Translate());
+            }
+            {
+                Rect rowRect = UIHelper.GetRowRect(ininRect, rowHeight, row);
+                row++;
+
+                
+                Widgets.CheckboxLabeled(rowRect, "costSizeScale".Translate(), ref AndroidsModSettings.Instance.costSizeScale);
+                TooltipHandler.TipRegion(rowRect, "expensiveAndroidsTooltip".Translate());
+            }
+            {
+                Rect rowRect = UIHelper.GetRowRect(ininRect, rowHeight, row);
+                row++;
+
+                
+                Widgets.CheckboxLabeled(rowRect, "techTreeShuffling".Translate(), ref AndroidsModSettings.Instance.techTreeShuffling);
+                TooltipHandler.TipRegion(rowRect, "techTreeShufflingTooltip".Translate());
+            }
+            {
+                Rect rowRect = UIHelper.GetRowRect(ininRect, rowHeight, row);
+                row++;
+
+
+                Widgets.TextFieldNumericLabeled(rowRect, "AndroidSettingsPrintTimeMult".Translate(), ref AndroidsModSettings.Instance.printTimeMult, ref printTimeMult);
+                TooltipHandler.TipRegion(rowRect, "printTimeMultTooltip".Translate());
+            }
+            {
+                Rect rowRect = UIHelper.GetRowRect(ininRect, rowHeight, row);
+                row++;
+
+
+                Widgets.TextFieldNumericLabeled(rowRect, "AndroidSettingsBasePrintTime".Translate(), ref AndroidsModSettings.Instance.basePrintTime, ref basePrintTime);
+                TooltipHandler.TipRegion(rowRect, "basePrintTimeTooltip".Translate());
             }
         }
     }

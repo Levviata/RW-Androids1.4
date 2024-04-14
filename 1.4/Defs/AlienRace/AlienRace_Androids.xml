@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AlienRace.ThingDef_AlienRace ParentName="BasePawn">
+		<defName>ChjAndroid</defName>
+		<label>Android</label>
+		<description>A race of humanlike robots which are mostly female in model variety.\n\nThe origins of these machines are mostly unknown. Some speculate they are escapees from a civilization which used them for labor and some just suggest they are outdated pleasure machines which got dumped by a passing space freighter.\n\nBy design by their previous masters they are weak physically but their raw fortitude is enough to make up for it. Beware of their biological reactor and capacitors violently exploding, if they die by overheating.</description>
+		<uiIconPath>Things/Pawn/Humanlike/UI/IconHuman</uiIconPath>
+		<comps>
+			<li Class="Androids.CompProperties_EnergyTracker">
+				<canHibernate>false</canHibernate>
+			</li>
+		</comps>
+		<alienRace>
+			<raceRestriction>
+				<blackGeneTags>
+					<li>SkinColor</li>
+				</blackGeneTags>
+			</raceRestriction>
+			<generalSettings>
+				<maleGenderProbability>0.2</maleGenderProbability>
+				<immuneToAge>true</immuneToAge>
+				<!-- <disallowedTraitsChance> -->
+					<!-- <li> -->
+						<!-- <defName>DrugDesire</defName> -->
+					<!-- </li> -->
+					<!-- <li> -->
+						<!-- <defName>NaturalMood</defName> -->
+					<!-- </li> -->
+					<!-- <li> -->
+						<!-- <defName>Nerves</defName> -->
+					<!-- </li> -->
+					<!-- <li> -->
+						<!-- <defName>Neurotic</defName> -->
+					<!-- </li> -->
+					<!-- <li> -->
+						<!-- <defName>PsychicSensitivity</defName> -->
+					<!-- </li> -->
+					<!-- <li> -->
+						<!-- <defName>Cannibal</defName> -->
+					<!-- </li> -->
+					<!-- <li> -->
+						<!-- <defName>TooSmart</defName> -->
+					<!-- </li> -->
+					<!-- <li> -->
+						<!-- <defName>Greedy</defName> -->
+					<!-- </li> -->
+					<!-- <li> -->
+						<!-- <defName>Jealous</defName> -->
+					<!-- </li> -->
+					<!-- <li> -->
+						<!-- <defName>DislikesMen</defName> -->
+					<!-- </li> -->
+					<!-- <li> -->
+						<!-- <defName>DislikesWomen</defName> -->
+					<!-- </li> -->
+					<!-- <li> -->
+						<!-- <defName>Xenophobia</defName> -->
+					<!-- </li> -->
+					<!-- <li> -->
+						<!-- <defName>AnnoyingVoice</defName> -->
+					<!-- </li> -->
+					<!-- <li> -->
+						<!-- <defName>CreepyBreathing</defName> -->
+					<!-- </li> -->
+					<!-- <li> -->
+						<!-- <defName>Pyromaniac</defName> -->
+					<!-- </li> -->
+					<!-- <li> -->
+						<!-- <defName>Wimp</defName> -->
+					<!-- </li> -->
+				<!-- </disallowedTraitsChance> -->
+				<immuneToXenophobia>true</immuneToXenophobia>
+				<humanRecipeImport>true</humanRecipeImport>
+				<alienPartGenerator>
+					  <headTypes>
+						<li>Male_Average_Normal</li>
+						<li>Male_Average_Pointy</li>
+						<li>Male_Average_Wide</li>
+						<li>Male_Narrow_Normal</li>
+						<li>Male_Narrow_Pointy</li>
+						<li>Male_Narrow_Wide</li>
+						<li>Female_Average_Normal</li>
+						<li>Female_Average_Pointy</li>
+						<li>Female_Average_Wide</li>
+						<li>Female_Narrow_Normal</li>
+						<li>Female_Narrow_Pointy</li>
+						<li>Female_Narrow_Wide</li>
+					  </headTypes>
+					<bodyTypes>
+						<li>Thin</li>
+						<li>Male</li>
+						<li>Female</li>
+						<li>Hulk</li>
+						<li>Fat</li>
+						<li MayRequire="Ludeon.RimWorld.Biotech">Child</li>
+					</bodyTypes>
+					<colorChannels>
+						<li>
+							<name>skin</name>
+							<first Class="ColorGenerator_Options">
+								<options>
+									<li>
+										<weight>10</weight>
+										<only>RGBA(0.94,0.94,0.94,1)</only>
+									</li>
+									<li>
+										<weight>5</weight>
+										<only>RGBA(0.80,0.80,0.95,1)</only>
+									</li>
+									<li>
+										<weight>5</weight>
+										<only>RGBA(0.80,0.90,0.80,1)</only>
+									</li>
+								</options>
+							</first>
+						</li>
+						<li>
+							<name>hair</name>
+							<first Class="ColorGenerator_Options">
+								<options>
+									<!-- Mundane Hair Colors -->
+									<li>
+										<weight>10</weight>
+										<only>RGBA(0.17,0.17,0.17,1)</only>
+									</li>
+									<li>
+										<weight>10</weight>
+										<only>RGBA(0.02,0.02,0.02,1)</only>
+									</li>
+									<li>
+										<weight>10</weight>
+										<only>RGBA(0.90,0.90,0.90,1)</only>
+									</li>
+									<li>
+										<weight>10</weight>
+										<only>RGBA(0.51,0.25,0.25,1)</only>
+									</li>
+									<li>
+										<weight>8</weight>
+										<only>RGBA(1.00,0.66,0.32,1)</only>
+									</li>
+									<!-- Exotic Hair Colors -->
+									<li>
+										<weight>5</weight>
+										<only>RGBA(0.0,0.5,1.0,1)</only>
+									</li>
+									<li>
+										<weight>5</weight>
+										<only>RGBA(1.0,0.00,0.5,1)</only>
+									</li>
+									<li>
+										<weight>5</weight>
+										<only>RGBA(1.00,0.00,0.00,1)</only>
+									</li>
+									<li>
+										<weight>5</weight>
+										<only>RGBA(0.00,1.00,0.00,1)</only>
+									</li>
+									<li>
+										<weight>5</weight>
+										<only>RGBA(0.00,1.00,1.00,1)</only>
+									</li>
+									<li>
+										<weight>5</weight>
+										<only>RGBA(0.78,0.78,0.78,1)</only>
+									</li>
+									<li>
+										<weight>5</weight>
+										<only>RGBA(0.92,0.92,0.29,1)</only>
+									</li>
+									<li>
+										<weight>5</weight>
+										<only>RGBA(0.63,0.28,0.64,1)</only>
+									</li>
+								</options>
+							</first>
+						</li>
+					</colorChannels>
+				</alienPartGenerator>
+				<reproduction>
+					<maleFertilityAgeFactor>
+					  <points>
+						<li>(14, 0)</li>
+						<li>(18, 0)</li>
+						<li>(50, 0)</li>
+						<li>(90, 0)</li>
+					  </points>
+					</maleFertilityAgeFactor>
+					<femaleFertilityAgeFactor>
+					  <points>
+						<li>(14, 0)</li>
+						<li>(18, 0)</li>
+						<li>(50, 0)</li>
+						<li>(90, 0)</li>
+					  </points>
+					</femaleFertilityAgeFactor>
+				</reproduction>
+
+			</generalSettings>
+			<graphicPaths>
+				<skeleton>Things/Pawn/Humanlike/Bodies/Dessicated/Dessicated_Thin</skeleton>
+				<head>Things/Pawns/Humanlikes/Android/Head/</head>
+				<body>Things/Pawns/Humanlikes/Android/Body/</body>
+            </graphicPaths>
+			<styleSettings>
+                <li>
+                    <key>HairDef</key>
+                    <value>
+                        <hasStyle>true</hasStyle>
+                    </value>
+                </li>
+				<li>
+                    <key>TattooDef</key>
+                    <value>
+                        <hasStyle>true</hasStyle>
+                    </value>
+                </li>
+				<li>
+                    <key>BeardDef</key>
+                    <value>
+                        <hasStyle>true</hasStyle>
+                    </value>
+                </li>
+            </styleSettings>
+			<thoughtSettings>
+				<cannotReceiveThoughts>
+					<li>NeedFood</li>
+					<li>Naked</li>
+					<li>SharedBed</li>
+				</cannotReceiveThoughts>
+			</thoughtSettings>
+			<relationSettings>
+				<relationChanceModifierChild>0</relationChanceModifierChild>
+				<relationChanceModifierExLover>1</relationChanceModifierExLover>
+				<relationChanceModifierExSpouse>1</relationChanceModifierExSpouse>
+				<relationChanceModifierFiance>1</relationChanceModifierFiance>
+				<relationChanceModifierLover>1</relationChanceModifierLover>
+				<relationChanceModifierParent>0</relationChanceModifierParent>
+				<relationChanceModifierSibling>0</relationChanceModifierSibling>
+				<relationChanceModifierSpouse>1</relationChanceModifierSpouse>
+			</relationSettings>
+			<compatibility>
+				<isFlesh>false</isFlesh>
+			</compatibility>
+
+		</alienRace>
+		<statBases>
+			<MarketValue>1500</MarketValue>
+			<MoveSpeed>4.61</MoveSpeed>
+			<Flammability>1.0</Flammability>
+			<ComfyTemperatureMin>-50</ComfyTemperatureMin>
+			<ComfyTemperatureMax>50</ComfyTemperatureMax>
+			<ToxicResistance>0.8</ToxicResistance>
+			<ImmunityGainSpeed>1.35</ImmunityGainSpeed>
+			<LeatherAmount>25</LeatherAmount>
+			<Mass>75.0</Mass>
+		</statBases>
+		<tools>
+			<li>
+				<label>left fist</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>4</power>
+				<cooldownTime>1.6</cooldownTime>
+				<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+				<surpriseAttack>
+					<extraMeleeDamages>
+						<li>
+							<def>Stun</def>
+							<amount>22</amount>
+						</li>
+					</extraMeleeDamages>
+				</surpriseAttack>
+			</li>
+			<li>
+				<label>right fist</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>4</power>
+				<cooldownTime>1.6</cooldownTime>
+				<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+				<surpriseAttack>
+					<extraMeleeDamages>
+						<li>
+							<def>Stun</def>
+							<amount>22</amount>
+						</li>
+					</extraMeleeDamages>
+				</surpriseAttack>
+			</li>
+			<li>
+				<label>teeth</label>
+				<capacities>
+					<li>Bite</li>
+				</capacities>
+				<power>4.0</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+				<chanceFactor>0.1</chanceFactor>
+			</li>
+			<li>
+				<label>head</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>3</power>
+				<cooldownTime>1.8</cooldownTime>
+				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+				<chanceFactor>0.2</chanceFactor>
+			</li>
+		</tools>
+		<race>
+			<thinkTreeMain>Humanlike</thinkTreeMain>
+			<thinkTreeConstant>HumanlikeConstant</thinkTreeConstant>
+			<intelligence>Humanlike</intelligence>
+			<makesFootprints>true</makesFootprints>
+			<lifeExpectancy>1000</lifeExpectancy>
+			<baseHungerRate>0.6</baseHungerRate>
+			<leatherDef>Leather_ChJAndroid</leatherDef>
+			<nameCategory>HumanStandard</nameCategory>
+			<body>Human</body>
+			<bloodDef>ChjFilthCoolant</bloodDef>
+			<deathActionWorkerClass>Androids.DeathActionWorker_Android</deathActionWorkerClass>
+			<baseBodySize>1</baseBodySize>
+			<baseHealthScale>1.3</baseHealthScale>
+			<foodType>OmnivoreHuman</foodType>
+			<gestationPeriodDays>45</gestationPeriodDays>
+			<litterSizeCurve>
+				<points>
+					<li>(0.5, 0)</li>
+					<li>(1, 1)</li>
+					<li>(1.01, 0.02)</li>
+					<li>(3.5, 0)</li>
+				</points>
+			</litterSizeCurve>
+      <lifeStageAges>
+        <li>
+          <def>HumanlikeBaby</def>
+          <minAge>0</minAge>
+        </li>
+        <li>
+          <def>HumanlikeChild</def>
+          <minAge>3</minAge>
+        </li>
+        <li MayRequire="Ludeon.RimWorld.Biotech">
+          <def>HumanlikePreTeenager</def>
+          <minAge>9</minAge>
+        </li>
+        <li>
+          <def>HumanlikeTeenager</def>
+          <minAge>13</minAge>
+        </li>
+        <li>
+          <def>HumanlikeAdult</def>
+          <minAge>18</minAge>
+        </li>
+      </lifeStageAges>
+      <lifeStageWorkSettings MayRequire="Ludeon.RimWorld.Biotech">
+        <Firefighter>7</Firefighter>
+        <Patient>0</Patient>
+        <Doctor>10</Doctor>
+        <PatientBedRest>0</PatientBedRest>
+        <Childcare MayRequire="Ludeon.RimWorld.Biotech">0</Childcare>
+        <BasicWorker>3</BasicWorker>
+        <Warden>10</Warden>
+        <Handling>7</Handling>
+        <Cooking>7</Cooking>
+        <Hunting>7</Hunting>
+        <Construction>10</Construction>
+        <Growing>7</Growing>
+        <Mining>7</Mining>
+        <PlantCutting>7</PlantCutting>
+        <Smithing>13</Smithing>
+        <Tailoring>7</Tailoring>
+        <Art>10</Art>
+        <Crafting>7</Crafting>
+        <Hauling>3</Hauling>
+        <Cleaning>3</Cleaning>
+        <Research>13</Research>
+      </lifeStageWorkSettings>
+			<soundMeleeHitPawn>Pawn_Melee_Punch_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
+			<specialShadowData>
+				<volume>(0.3, 0.8, 0.4)</volume>
+				<offset>(0,0,-0.3)</offset>
+			</specialShadowData>
+      <ageGenerationCurve>
+        <points>
+          <li MayRequire="Ludeon.RimWorld.Biotech">(0,0)</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">(0.001,43)</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">(8,86)</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">(12.5,118)</li>  <!-- Exclude 12.5-13 years to avoid spawning pawns who are very close to becoming adults -->  
+          <li MayRequire="Ludeon.RimWorld.Biotech">(12.51,0)</li>  
+          <li MayRequire="Ludeon.RimWorld.Biotech">(13,0)</li>      
+          <li MayRequire="Ludeon.RimWorld.Biotech">(13.001,122)</li><!-- End exclude -->
+          <li MayRequire="Ludeon.RimWorld.Biotech">(13.999,130)</li>
+          <li>(14,0)</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">(14.001,130)</li>
+          <li>(16,100)</li>
+          <li>(50,100)</li>
+          <li>(60,30)</li>
+          <li>(70,18)</li>
+          <li>(80,10)</li>
+          <li>(90,3)</li>
+          <li>(100,0)</li>
+        </points>
+      </ageGenerationCurve>
+			<hediffGiverSets>
+				<li>ChjAndroidStandard</li>
+			</hediffGiverSets>
+		</race>
+		<recipes>
+			<li>ChJAndroidRepairKit</li>
+		</recipes>
+		<butcherProducts>
+			<Plasteel>16</Plasteel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+			<ComponentSpacer>1</ComponentSpacer>
+		</butcherProducts>
+		<modExtensions>
+			<li Class="Androids.SexualizeAndroidRJW">
+			</li>
+		</modExtensions>
+	</AlienRace.ThingDef_AlienRace>
+
+	<ThingDef ParentName="LeatherBase">
+		<defName>Leather_ChJAndroid</defName>
+		<label>android leather</label>
+		<description>Tanned, dried, scraped synthetic android skin. Many people find this material horrifying. Some find it fascinating. While a decent leather, it neither protects nor insulates particularly well.</description>
+		<graphicData>
+			<color>(239,239,239)</color>
+			<colorTwo>(239,239,239)</colorTwo>
+		</graphicData>
+		<statBases>
+			<MarketValue>5.4</MarketValue>
+			<StuffPower_Armor_Sharp>0.24</StuffPower_Armor_Sharp>
+			<StuffPower_Insulation_Cold>12</StuffPower_Insulation_Cold>
+			<StuffPower_Insulation_Heat>12</StuffPower_Insulation_Heat>
+		</statBases>
+		<stuffProps>
+			<color>(239,239,239)</color>
+			<commonality>0.0025</commonality>
+		</stuffProps>
+	</ThingDef>
+	<HeadTypeDef>
+        <defName>Female_Average_Normal</defName>
+        <graphicPath>Things/Pawns/Humanlikes/Android/Head/Female_Average_Normal</graphicPath>
+        <gender>Female</gender>
+    </HeadTypeDef>
+	<HeadTypeDef>
+        <defName>Female_Average_Pointy</defName>
+        <graphicPath>Things/Pawns/Humanlikes/Android/Head/Female_Average_Pointy</graphicPath>
+        <gender>Female</gender>
+    </HeadTypeDef>
+	<HeadTypeDef>
+        <defName>Female_Average_Wide</defName>
+        <graphicPath>Things/Pawns/Humanlikes/Android/Head/Female_Average_Wide</graphicPath>
+        <gender>Female</gender>
+    </HeadTypeDef>
+	<HeadTypeDef>
+        <defName>Female_Narrow_Normal</defName>
+        <graphicPath>Things/Pawns/Humanlikes/Android/Head/Female_Narrow_Normal</graphicPath>
+        <gender>Female</gender>
+    </HeadTypeDef>
+	<HeadTypeDef>
+        <defName>Female_Narrow_Pointy</defName>
+        <graphicPath>Things/Pawns/Humanlikes/Android/Head/Female_Narrow_Pointy</graphicPath>
+        <gender>Female</gender>
+    </HeadTypeDef>
+	<HeadTypeDef>
+        <defName>Female_Narrow_Wide</defName>
+        <graphicPath>Things/Pawns/Humanlikes/Android/Head/Female_Narrow_Wide</graphicPath>
+        <gender>Female</gender>
+    </HeadTypeDef>
+
+
+
+	<HeadTypeDef>
+        <defName>Male_Average_Normal</defName>
+        <graphicPath>Things/Pawns/Humanlikes/Android/Head/Male_Average_Normal</graphicPath>
+        <gender>Male</gender>
+    </HeadTypeDef>
+	<HeadTypeDef>
+        <defName>Male_Average_Pointy</defName>
+        <graphicPath>Things/Pawns/Humanlikes/Android/Head/Male_Average_Pointy</graphicPath>
+        <gender>Male</gender>
+    </HeadTypeDef>
+	<HeadTypeDef>
+        <defName>Male_Average_Wide</defName>
+        <graphicPath>Things/Pawns/Humanlikes/Android/Head/Male_Average_Wide</graphicPath>
+        <gender>Male</gender>
+    </HeadTypeDef>
+	<HeadTypeDef>
+        <defName>Male_Narrow_Normal</defName>
+        <graphicPath>Things/Pawns/Humanlikes/Android/Head/Male_Narrow_Normal</graphicPath>
+        <gender>Male</gender>
+    </HeadTypeDef>
+	<HeadTypeDef>
+        <defName>Male_Narrow_Pointy</defName>
+        <graphicPath>Things/Pawns/Humanlikes/Android/Head/Male_Narrow_Pointy</graphicPath>
+        <gender>Male</gender>
+    </HeadTypeDef>
+	<HeadTypeDef>
+        <defName>Male_Narrow_Wide</defName>
+        <graphicPath>Things/Pawns/Humanlikes/Android/Head/Male_Narrow_Wide</graphicPath>
+        <gender>Male</gender>
+    </HeadTypeDef>
+</Defs>

@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using Androids.Integration;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -206,6 +207,13 @@ namespace Androids
 
             base.Destroy(mode);
         }
+        public override void DeSpawn(DestroyMode mode)
+        {
+
+            StopPawnCrafting();
+
+            base.DeSpawn(mode);
+        }
 
         public override IEnumerable<Gizmo> GetGizmos()
         {
@@ -245,7 +253,7 @@ namespace Androids
 
             if (printerStatus == CrafterStatus.Crafting)
             {
-                builder.AppendLine(printerProperties.crafterProgressText.Translate(((float)((float)(printerProperties.ticksToCraft + extraTimeCost) - printingTicksLeft) / (float)(printerProperties.ticksToCraft + extraTimeCost)).ToStringPercent()));
+                builder.AppendLine(printerProperties.crafterProgressText.Translate(((float)((float)(AndroidsModSettings.Instance.basePrintTime + extraTimeCost) - printingTicksLeft) / (float)(AndroidsModSettings.Instance.basePrintTime + extraTimeCost)).ToStringPercent()));
             }
 
             if (printerStatus == CrafterStatus.Filling)
@@ -335,7 +343,7 @@ namespace Androids
             }
             else
             {
-                printingTicksLeft = printerProperties.ticksToCraft + extraTimeCost;
+                printingTicksLeft = AndroidsModSettings.Instance.basePrintTime + extraTimeCost;
                 nextResourceTick = printerProperties.resourceTick;
             }
 
@@ -444,7 +452,7 @@ namespace Androids
 
                                                 if (item != null)
                                                 {
-                                                    int resourceTickAmount = (int)Math.Ceiling((thingOrderRequest.amount / ((double)(printerProperties.ticksToCraft + extraTimeCost) / printerProperties.resourceTick)));
+                                                    int resourceTickAmount = (int)Math.Ceiling((thingOrderRequest.amount / ((double)(AndroidsModSettings.Instance.basePrintTime + extraTimeCost) / printerProperties.resourceTick)));
 
                                                     int amount = Math.Min(resourceTickAmount, item.stackCount);
                                                     Thing outThing = null;
@@ -485,7 +493,7 @@ namespace Androids
 
                                                 if (item != null)
                                                 {
-                                                    int resourceTickAmount = (int)Math.Ceiling((thingOrderRequest.amount / ((float)(printerProperties.ticksToCraft + extraTimeCost) / printerProperties.resourceTick)));
+                                                    int resourceTickAmount = (int)Math.Ceiling((thingOrderRequest.amount / ((float)(AndroidsModSettings.Instance.basePrintTime + extraTimeCost) / printerProperties.resourceTick)));
 
                                                     int amount = Math.Min(resourceTickAmount, item.stackCount);
                                                     Thing takenItem = ingredients.Take(item, amount);
@@ -519,7 +527,7 @@ namespace Androids
                                 //Spawn
                                 GenSpawn.Spawn(pawnToPrint, InteractionCell, Map);
                                 pawnToPrint.health.AddHediff(RimWorld.HediffDefOf.CryptosleepSickness);
-                                pawnToPrint.needs.mood.thoughts.memories.TryGainMemory(NeedsDefOf.ChJAndroidSpawned);
+                                pawnToPrint.needs?.mood?.thoughts?.memories?.TryGainMemory(NeedsDefOf.ChJAndroidSpawned);
 
                                 //Make and send letter.
                                 ChoiceLetter letter = LetterMaker.MakeLetter("AndroidPrintedLetterLabel".Translate(pawnToPrint.Name.ToStringShort), "AndroidPrintedLetterDescription".Translate(pawnToPrint.Name.ToStringFull), LetterDefOf.PositiveEvent, pawnToPrint);

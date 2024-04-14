@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="BaseHumanMakeableGun">
+		<defName>Gun_ChjCoreLauncher</defName>
+		<label>core launcher</label>
+		<description>A wide-barreled core bolt launcher designed for use on battle droids. It fires superheated bolts of plasma with an explosive core that explode upon impact.</description>
+		<graphicData>
+			<texPath>Things/Item/Weapon/Cheese_Halo_Fuel_Rod_Cannon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+		<statBases>
+			<WorkToMake>30000</WorkToMake>
+			<Mass>30.0</Mass>
+			<RangedWeapon_Cooldown>5.0</RangedWeapon_Cooldown>
+		</statBases>
+		<techLevel>Spacer</techLevel>
+		<costList>
+			<Steel>125</Steel>
+			<Plasteel>25</Plasteel>
+			<ComponentSpacer>4</ComponentSpacer>
+		</costList>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>10</Crafting>
+			</skillRequirements>
+			<researchPrerequisite>ChargedShot</researchPrerequisite>
+			<recipeUsers Inherit="False">
+				<li>FabricationBench</li>
+			</recipeUsers>
+		</recipeMaker>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_ChjCoreLauncher</defaultProjectile>
+				<warmupTime>2.0</warmupTime>
+				<minRange>2.5</minRange>
+				<range>30.0</range>
+				<forcedMissRadius>1.9</forcedMissRadius>
+				<burstShotCount>1</burstShotCount>
+				<soundCast>Shot_IncendiaryLauncher</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>28</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>11</power>
+				<cooldownTime>1.8</cooldownTime>
+			</li>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>9.7</power>
+				<cooldownTime>1.9</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_ChjCoreLauncher</defName>
+		<label>core bolt</label>
+		<graphicData>
+			<texPath>Things/Item/Weapon/RodCannonShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<speed>30</speed>
+			<damageDef>Bomb</damageDef>
+			<explosionRadius>2.2</explosionRadius>
+			<damageAmountBase>30</damageAmountBase>
+			<armorPenetrationBase>1.0</armorPenetrationBase>
+			<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.6</preExplosionSpawnChance>
+		</projectile>
+	</ThingDef>
+</Defs>

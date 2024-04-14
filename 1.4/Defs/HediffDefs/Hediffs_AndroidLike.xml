@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<HediffDef>
+		<defName>ChjAndroidLike</defName>
+		<label>android</label>
+		<description>This is an android made out of a different frame. Sometimes glitterworld inhabitants create androids that look like creatures from the myths, such as kijin &amp; arachnes.</description>
+		<defaultLabelColor>(0.0, 1.0, 0.0)</defaultLabelColor>
+		<hediffClass>Androids.AndroidLikeHediff</hediffClass>
+		<everCurableByItem>false</everCurableByItem>
+		<isBad>false</isBad>
+		<countsAsAddedPartOrImplant>true</countsAsAddedPartOrImplant>
+		<stages>
+			<li>
+				<statOffsets>
+					<ComfyTemperatureMin>-50</ComfyTemperatureMin>
+					<ComfyTemperatureMax>50</ComfyTemperatureMax>
+					<ToxicResistance>0.90</ToxicResistance>
+					<ToxicEnvironmentResistance>0.90</ToxicEnvironmentResistance>
+					<ImmunityGainSpeed>0.35</ImmunityGainSpeed>
+					<CarryingCapacity>30</CarryingCapacity>
+				</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+</Defs>

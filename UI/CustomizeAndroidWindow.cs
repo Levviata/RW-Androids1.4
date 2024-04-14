@@ -1,4 +1,6 @@
 ﻿using AlienRace;
+using Androids.Integration;
+using Androids.Utilities;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -374,7 +376,6 @@ namespace Androids
                 if (RaceUtility.AlienRaceKinds.Count() > 1)
                 {
                     Rect rowRect = new Rect(32 + 16f + 256f, row, 256f - 16f, 24f);
-
                     if (Widgets.ButtonText(rowRect, currentPawnKindDef.race.LabelCap))
                     {
                         FloatMenuUtility.MakeMenu<PawnKindDef>(RaceUtility.AlienRaceKinds, raceKind => raceKind.race.LabelCap, (PawnKindDef raceKind) => delegate
@@ -453,7 +454,7 @@ namespace Androids
                     if (Widgets.ButtonText(rowRect, label))
                     {
                         IEnumerable<BackstoryDef> backstories = from backstory in (from backstoryDef in DefDatabase<BackstoryDef>.AllDefs.ToList() select backstoryDef)
-                                                                where (backstory.spawnCategories.Any(category => (currentPawnKindDef.backstoryCategories != null && currentPawnKindDef.backstoryCategories.Any(subCategory => subCategory == category))) || backstory.spawnCategories.Contains("ChjAndroid")) && backstory.slot == BackstorySlot.Childhood
+                                                                where (backstory.spawnCategories.Any(category => (currentPawnKindDef.backstoryCategories != null && currentPawnKindDef.backstoryCategories.Any(subCategory => subCategory == category))) || backstory.spawnCategories.Contains("ChjAndroid") || backstory.spawnCategories.Contains("ATR_Inorganic") || backstory.spawnCategories.Contains("ATR_Drone") || backstory.spawnCategories.Contains("ATR_GeneralAndroids") || backstory.spawnCategories.Contains("ATR_ViolentAndroids")) && backstory.slot == BackstorySlot.Childhood
                                                                 select backstory;
                         FloatMenuUtility.MakeMenu<BackstoryDef>(backstories, backstory => backstory.TitleCapFor(newAndroid.gender), (BackstoryDef backstory) => delegate
                         {
@@ -481,9 +482,9 @@ namespace Androids
                     if (Widgets.ButtonText(rowRect, label))
                     {
                         IEnumerable<BackstoryDef> backstories = from backstory in (from backstoryDef in DefDatabase<BackstoryDef>.AllDefs.ToList()
-                                                                                select backstoryDef)
-                                                             where (backstory.spawnCategories.Any(category => (currentPawnKindDef.backstoryCategories != null && currentPawnKindDef.backstoryCategories.Any(subCategory => subCategory == category))) || backstory.spawnCategories.Contains("ChjAndroid")) && backstory.slot == BackstorySlot.Adulthood
-                                                             select backstory;
+                                                                                   select backstoryDef)
+                                                                where (backstory.spawnCategories.Any(category => (currentPawnKindDef.backstoryCategories != null && currentPawnKindDef.backstoryCategories.Any(subCategory => subCategory == category))) || backstory.spawnCategories.Contains("ChjAndroid") || backstory.spawnCategories.Contains("ATR_Inorganic")|| backstory.spawnCategories.Contains("ATR_Drone")|| backstory.spawnCategories.Contains("ATR_GeneralAndroids")|| backstory.spawnCategories.Contains("ATR_ViolentAndroids")) && backstory.slot == BackstorySlot.Adulthood
+                                                                select backstory;
                         FloatMenuUtility.MakeMenu<BackstoryDef>(backstories, backstory => backstory.TitleCapFor(newAndroid.gender), (BackstoryDef backstory) => delegate
                         {
                             newAdulthoodBackstory = backstory;
@@ -533,10 +534,10 @@ namespace Androids
                     Rect costRect = new Rect(column + 3f + currentCostItem * 32f, row, 26f, 26f);
                     //Widgets.ThingIcon(costRect, RimWorld.ThingDefOf.AncientCryptosleepCasket);
                     Widgets.DrawTextureFitted(costRect, ContentFinder<Texture2D>.Get("UI/TimeControls/TimeSpeedButton_Superfast"), 1f);
-                    TooltipHandler.TipRegion(costRect, "AndroidCustomizationTimeCost".Translate() + ": " + (androidPrinter.PrinterProperties.ticksToCraft + finalExtraPrintingTimeCost).ToStringTicksToPeriodVerbose());
+                    TooltipHandler.TipRegion(costRect, "AndroidCustomizationTimeCost".Translate() + ": " + (AndroidsModSettings.Instance.basePrintTime + finalExtraPrintingTimeCost).ToStringTicksToPeriodVerbose());
                     Widgets.DrawHighlightIfMouseover(costRect);
 
-                    Widgets.Label(costRect.ExpandedBy(8), "" + (androidPrinter.PrinterProperties.ticksToCraft + finalExtraPrintingTimeCost).ToStringTicksToPeriodVerbose());
+                    Widgets.Label(costRect.ExpandedBy(8), "" + (AndroidsModSettings.Instance.basePrintTime + finalExtraPrintingTimeCost).ToStringTicksToPeriodVerbose());
                 }
                 currentCostItem++;
 
@@ -750,6 +751,7 @@ namespace Androids
                                 tooltip.AppendLine();
                                 tooltip.AppendLine(upgrade.description);
                                 tooltip.AppendLine();
+                                //upgrade.hediffToApply.ConcreteExample.Severity = Mathf.Max(upgrade.hediffToApply.ConcreteExample.Severity, upgrade.hediffToApply.ConcreteExample.def.initialSeverity);
                                 //if (upgrade.hediffToApply != null && upgrade.hediffToApply.ConcreteExample != null)
                                 //{
                                 //    tooltip.AppendLine(upgrade.hediffToApply.ConcreteExample.TipStringExtra.TrimEndNewlines());
@@ -1000,12 +1002,79 @@ namespace Androids
             }
 
             finalExtraPrintingTimeCost += traitsTimeCost;
-
-            //Deduct costs from body size.
-            foreach (ThingOrderRequest cost in finalCalculatedPrintingCost)
+            finalExtraPrintingTimeCost = (int)(finalExtraPrintingTimeCost * AndroidsModSettings.Instance.printTimeMult); ;
+            try
             {
-                if (!thingsExemptedFromBodySize.Contains(cost.thingDef))
-                    cost.amount = (float)Math.Ceiling(cost.amount * newAndroid.def.race.baseBodySize);
+                if (ModChecker.HasMH())
+                {
+                    if (MH.IsMHAndroid(newAndroid))
+                    {
+
+                        foreach (ThingOrderRequest thing in finalCalculatedPrintingCost)
+                        {
+                            if (thing.nutrition)
+                            {
+                                thing.amount = 0;
+                            }
+                        }
+                    }
+                }
+                else if (ModChecker.HasATR())
+                {
+                    if (ATR.IsATAndroid(newAndroid))
+                    {
+
+                        foreach (ThingOrderRequest thing in finalCalculatedPrintingCost)
+                        {
+                            if (thing.nutrition)
+                            {
+                                thing.amount = 0;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Warning("ATR mod not loaded");
+            }
+
+            if (AndroidsModSettings.Instance.expensiveAndroids)
+            {
+                ThingOrderRequest uranium = new ThingOrderRequest();
+                uranium.amount = 80;
+                uranium.nutrition = false;
+                uranium.thingDef = RimWorld.ThingDefOf.Uranium;
+                finalCalculatedPrintingCost.Add(uranium);
+
+                ThingOrderRequest gold = new ThingOrderRequest();
+                gold.amount = 40;
+                gold.nutrition = false;
+                gold.thingDef = RimWorld.ThingDefOf.Gold;
+
+                finalCalculatedPrintingCost.Add(gold);
+
+                UpgradeCommand uc = appliedUpgradeCommands.SingleOrDefault(c => c.def.defName == "Upgrade_DroneCore");
+                if (uc == null)
+                {
+                    ThingOrderRequest aiCore = new ThingOrderRequest();
+                    aiCore.amount = 1;
+                    aiCore.nutrition = false;
+                    aiCore.thingDef = RimWorld.ThingDefOf.AIPersonaCore;
+
+                    finalCalculatedPrintingCost.Add(aiCore);
+
+                }
+
+            }
+            if (AndroidsModSettings.Instance.costSizeScale)
+            {
+                //Deduct costs from body size.
+                foreach (ThingOrderRequest cost in finalCalculatedPrintingCost)
+                {
+                    if (!thingsExemptedFromBodySize.Contains(cost.thingDef))
+                        cost.amount = (float)Math.Ceiling(cost.amount * newAndroid.def.race.baseBodySize);
+                }
             }
         }
 
@@ -1070,8 +1139,8 @@ namespace Androids
                 num = Rand.ByCurve(LevelRandomCurve);
             }
             foreach (BackstoryDef current in from bs in pawn.story.AllBackstories
-                                          where bs != null
-                                          select bs)
+                                             where bs != null
+                                             select bs)
             {
                 foreach (KeyValuePair<SkillDef, int> current2 in current.skillGains)
                 {
@@ -1106,7 +1175,7 @@ namespace Androids
             {
                 HarmonyPatches.bypassGenerationOfUpgrades = true;
                 pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(currentPawnKindDef, androidPrinter.Faction, RimWorld.PawnGenerationContext.NonPlayer,
-                -1, true, false, false, false, false,  0f, false, false, true, true, false, false, false, true, fixedGender: gender));
+                -1, true, false, false, false, false, 0f, false, false, true, true, false, false, false, true, fixedGender: gender));
                 HarmonyPatches.bypassGenerationOfUpgrades = false;
 
                 //Give random skin and hair color.
@@ -1122,7 +1191,7 @@ namespace Androids
             {
                 HarmonyPatches.bypassGenerationOfUpgrades = true;
                 pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(currentPawnKindDef, androidPrinter.Faction, RimWorld.PawnGenerationContext.NonPlayer,
-                -1, true, false, false, false, false,  0f, false, false, true, true, false, false, false, true, fixedGender: gender, fixedBiologicalAge: 20, fixedChronologicalAge: 20));
+                -1, true, false, false, false, false, 0f, false, false, true, true, false, false, false, true, fixedGender: gender, fixedBiologicalAge: 20, fixedChronologicalAge: 20));
                 HarmonyPatches.bypassGenerationOfUpgrades = false;
             }
 
@@ -1146,11 +1215,11 @@ namespace Androids
             {
                 pawn.skills.Notify_SkillDisablesChanged();
             }
+
             if (!pawn.Dead && pawn.RaceProps.Humanlike)
             {
-                pawn.needs.mood.thoughts.situational.Notify_SituationalThoughtsDirty();
+                pawn.needs?.mood?.thoughts?.situational?.Notify_SituationalThoughtsDirty();
             }
-
             //Set original values
             {
                 //Traits
