@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Verse;
+using Verse.AI.Group;
 
 namespace Androids
 {
@@ -27,18 +28,18 @@ namespace Androids
             }
         }
 
-        public override void Notify_PawnDied()
+        public override void Notify_PawnDied(DamageInfo? dinfo, Hediff culprit = null)
         {
             //Log.Message("Pawn died: " + pawn);
             //Log.Message("Parent Holder: " + pawn.ParentHolder);
 
-            if (pawn.health.hediffSet.HasHediff(HediffDefOf.ChjAndroidLike) && ThingDefOf.ChjAndroid.race.DeathActionWorker != null)
+            if (pawn.health.hediffSet.HasHediff(HediffDefOf.ChjAndroidLike) && ThingDefOf.ChjAndroid.race.deathAction != null)
             {
                 //Log.Message("Is Android");
                 if (pawn.Corpse != null)
                 {
                     //Log.Message("Pre: Death action worker");
-                    ThingDefOf.ChjAndroid.race.DeathActionWorker.PawnDied(pawn.Corpse);
+                    ThingDefOf.ChjAndroid.race.DeathActionWorker.PawnDied(pawn.Corpse, pawn.GetLord());
                     //Log.Message("Post: Death action worker");
                 }
             }

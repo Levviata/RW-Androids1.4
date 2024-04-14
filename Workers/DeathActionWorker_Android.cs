@@ -3,16 +3,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Verse;
+using Verse.AI.Group;
 
-namespace Androids
+namespace Androids.Workers
 {
-    /// <summary>
-    /// Makes the Pawn explode with varied degree on death.
-    /// </summary>
     public class DeathActionWorker_Android : DeathActionWorker
     {
-        public override void PawnDied(Corpse corpse)
+        public DeathActionProps_Android Props
+        {
+            get
+            {
+                return (DeathActionProps_Android)this.props;
+            }
+        }
+        public override void PawnDied(Corpse corpse, Lord prevLord)
         {
             //Log.Message("Inside DeathActionWorker");
 
@@ -24,7 +30,7 @@ namespace Androids
 
             //Try get energy tracker.
             EnergyTrackerComp energy = pawn.TryGetComp<EnergyTrackerComp>();
-            
+
             if (energy != null)
             {
                 //Log.Message("EnergyTracker");
@@ -39,7 +45,7 @@ namespace Androids
                     return;
 
                 //Overheating death is excepted.
-                if(overheatingHediff != null || !shouldBeDeadByNaturalCauses)
+                if (overheatingHediff != null || !shouldBeDeadByNaturalCauses)
                 {
                     float explosionRadius = overheatingHediff.Severity * AndroidsModSettings.Instance.androidExplosionRadius * energy.energy;
 
@@ -90,5 +96,6 @@ namespace Androids
                 }
             }
         }
+
     }
 }

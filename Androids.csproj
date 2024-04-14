@@ -17,7 +17,7 @@
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Androids\1.4\Assemblies\</OutputPath>
+    <OutputPath>..\Androids\1.5\Assemblies\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -39,22 +39,12 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AlienRace">
-      <HintPath>..\..\..\..\workshop\content\294100\839005762\1.4\Assemblies\AlienRace.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Android Tiers Reforged">
-      <HintPath>..\..\..\..\workshop\content\294100\2917948202\1.4\Assemblies\Android Tiers Reforged.dll</HintPath>
+      <HintPath>..\..\..\..\workshop\content\294100\839005762\1.5\Assemblies\AlienRace.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
-    </Reference>
-    <Reference Include="Mechanical Humanlikes Core">
-      <HintPath>..\..\..\..\workshop\content\294100\2974524016\1.4\Assemblies\Mechanical Humanlikes Core.dll</HintPath>
-    </Reference>
-    <Reference Include="ShipsHaveInsides">
-      <HintPath>..\SaveOurShip2Experimental\1.4\Assemblies\ShipsHaveInsides.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -180,8 +170,10 @@
     <Compile Include="UI\Gizmos\Gizmo_TogglePrinting.cs" />
     <Compile Include="UI\ITab_AndroidPrinter.cs" />
     <Compile Include="UI\UIHelper.cs" />
-    <Compile Include="Workers\DeathActionWorker_Android.cs" />
+    <Compile Include="Workers\DeathActionProps_Android.cs" />
+    <Compile Include="Workers\DeathActionProps_Droid.cs" />
     <Compile Include="Workers\DeathActionWorker_Droid.cs" />
+    <Compile Include="Workers\DeathActionWorker_Android.cs" />
     <Compile Include="Workers\Recipe_Disassemble.cs" />
     <Compile Include="Workers\Recipe_RepairKit.cs" />
     <Compile Include="Workers\ThoughtWorker_DroidAlways.cs" />

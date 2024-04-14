@@ -14,8 +14,11 @@ namespace Androids
     {
         protected override ThoughtState CurrentStateInternal(Pawn p)
         {
-            if ( p.health.hediffSet.HasHediff(HediffDefOf.ChjAndroidLike) &&( p.ideo.Ideo.HasMeme (RimWorld.MemeDefOf.Transhumanist) || p.story.traits.HasTrait(RimWorld.TraitDefOf.Transhumanist) ))
+            if ( p.health.hediffSet.HasHediff(HediffDefOf.ChjAndroidLike) &&( p.ideo.Ideo.HasMeme(DefDatabase<MemeDef>.GetNamed("Transhumanist")) || p.story.traits.HasTrait(RimWorld.TraitDefOf.Transhumanist)))
+            {
+                Log.Warning("Transhumanist thought active");
                 return ThoughtState.ActiveAtStage(0);
+            }
 
             return ThoughtState.Inactive;
         }

@@ -12,9 +12,9 @@ namespace Androids
     /// </summary>
     public class Hediff_BlackBox : HediffWithComps, IExtraGizmos
     {
-        public override void Notify_PawnDied()
+        public override void Notify_PawnDied(DamageInfo? dinfo, Hediff culprit = null)
         {
-            base.Notify_PawnDied();
+            base.Notify_PawnDied(dinfo, culprit);
 
             if (pawn.Corpse != null)
             {

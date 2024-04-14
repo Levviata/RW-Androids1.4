@@ -25,24 +25,24 @@ namespace Androids
             PortraitsCache.PortraitsCacheUpdate();
 
             //Add Android Hediff.
-              if (ModChecker.HasMH())
-            {
-                if (!MH.IsMHAndroid(pawn))
-                {
-                    pawn.health.AddHediff(HediffDefOf.ChjAndroidLike);
-                }
-            }
-            else if (ModChecker.HasATR())
-            {
-                if (!ATR.IsATAndroid(pawn))
-                {
-                    pawn.health.AddHediff(HediffDefOf.ChjAndroidLike);
-                }
-            }
-            else
-            {
+            //  if (ModChecker.HasMH())
+            //{
+            //    if (!MH.IsMHAndroid(pawn))
+            //    {
+            //        pawn.health.AddHediff(HediffDefOf.ChjAndroidLike);
+            //    }
+            //}
+            //else if (ModChecker.HasATR())
+            //{
+            //    if (!ATR.IsATAndroid(pawn))
+            //    {
+            //        pawn.health.AddHediff(HediffDefOf.ChjAndroidLike);
+            //    }
+            //}
+            //else
+            //{
                 pawn.health.AddHediff(HediffDefOf.ChjAndroidLike);
-            }
+            //}
 
             //Remove old wounds and bad birthday related ones.
             List<Hediff> hediffs = pawn.health.hediffSet.hediffs.ToList();

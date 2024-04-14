@@ -112,7 +112,7 @@ namespace Androids
             }
             
             yield return Toils_Haul.StartCarryThing(TargetIndex.A, false, true, false);
-            this.AddFinishAction(delegate()
+            this.AddFinishAction(delegate
             {
                 if(pawn.carryTracker is Pawn_CarryTracker carryTracker && carryTracker.CarriedThing is Thing thing)
                 {

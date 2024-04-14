@@ -3,16 +3,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Verse;
+using Verse.AI.Group;
 
-namespace Androids
+namespace Androids.Workers
 {
-    /// <summary>
-    /// Makes the pawn explode like a Android and drop some butchery products on death.
-    /// </summary>
     public class DeathActionWorker_Droid : DeathActionWorker
     {
-        public override void PawnDied(Corpse corpse)
+        public DeathActionProps_Droid Props
+        {
+            get
+            {
+                return (DeathActionProps_Droid)this.props;
+            }
+        }
+    
+        public override void PawnDied(Corpse corpse, Lord prevLord)
         {
             if (!AndroidsModSettings.Instance.androidExplodesOnDeath)
                 return;
@@ -56,3 +63,4 @@ namespace Androids
         }
     }
 }
+

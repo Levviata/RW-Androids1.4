@@ -11,9 +11,9 @@ namespace Androids
     /// </summary>
     public static class AndroidCustomizationTweaks
     {
-        [TweakValue("AndroidCustomizationWindow", 16f, 128f)]
+        //[TweakValue("AndroidCustomizationWindow", 16f, 128f)]
         public static int upgradeBaseSize = 48;
-        [TweakValue("AndroidCustomizationWindow", 3, 100)]
+        //[TweakValue("AndroidCustomizationWindow", 3, 100)]
         public static int maxTraitsToPick = 7;
     }
 }

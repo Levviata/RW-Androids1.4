@@ -166,7 +166,8 @@ namespace Androids
             //Detect changes
             if (refreshAndroidPortrait)
             {
-                newAndroid.Drawer.renderer.graphics.ResolveAllGraphics();
+                //newAndroid.Drawer.renderer.graphics.ResolveAllGraphics();
+                newAndroid.Drawer.renderer.SetAllGraphicsDirty();
                 PortraitsCache.SetDirty(newAndroid);
                 PortraitsCache.PortraitsCacheUpdate();
 
@@ -307,7 +308,8 @@ namespace Androids
                         Func<Color, Action> setColorAction = (Color color) => delegate
                         {
                             newAndroid.story.HairColor = color;
-                            newAndroid.Drawer.renderer.graphics.ResolveAllGraphics();
+                            newAndroid.Drawer.renderer.SetAllGraphicsDirty();
+
                             PortraitsCache.SetDirty(newAndroid);
                             PortraitsCache.PortraitsCacheUpdate();
                         };
@@ -349,7 +351,9 @@ namespace Androids
                             FloatMenuUtility.MakeMenu<HairDef>(hairs, hairDef => hairDef.LabelCap, (HairDef hairDef) => delegate
                             {
                                 newAndroid.story.hairDef = hairDef;
-                                newAndroid.Drawer.renderer.graphics.ResolveAllGraphics();
+                                //newAndroid.Drawer.renderer.graphics.ResolveAllGraphics();
+                                newAndroid.Drawer.renderer.SetAllGraphicsDirty();
+
                                 PortraitsCache.SetDirty(newAndroid);
                                 PortraitsCache.PortraitsCacheUpdate();
                             });
@@ -867,11 +871,11 @@ namespace Androids
                 }
             }
 
-            //Filter out traits the race can NEVER get.
+            //Filter out traits the race can NEVER get. 
             //AlienComp alienComp = newAndroid.TryGetComp<AlienComp>();
             if (newAndroid.def is ThingDef_AlienRace alienRaceDef)
             {
-                List<RimWorld.TraitDef> disallowedTraits = alienRaceDef?.alienRace?.generalSettings?.disallowedTraits?.Select(trait => trait.defName).ToList();
+                List<RimWorld.TraitDef> disallowedTraits = alienRaceDef?.alienRace?.generalSettings?.disallowedTraits?.Select(trait => trait.entry.def).ToList();
 
                 if (disallowedTraits != null)
                 {
@@ -1003,41 +1007,41 @@ namespace Androids
 
             finalExtraPrintingTimeCost += traitsTimeCost;
             finalExtraPrintingTimeCost = (int)(finalExtraPrintingTimeCost * AndroidsModSettings.Instance.printTimeMult); ;
-            try
-            {
-                if (ModChecker.HasMH())
-                {
-                    if (MH.IsMHAndroid(newAndroid))
-                    {
+            //try
+            //{
+            //    if (ModChecker.HasMH())
+            //    {
+            //        if (MH.IsMHAndroid(newAndroid))
+            //        {
 
-                        foreach (ThingOrderRequest thing in finalCalculatedPrintingCost)
-                        {
-                            if (thing.nutrition)
-                            {
-                                thing.amount = 0;
-                            }
-                        }
-                    }
-                }
-                else if (ModChecker.HasATR())
-                {
-                    if (ATR.IsATAndroid(newAndroid))
-                    {
+            //            foreach (ThingOrderRequest thing in finalCalculatedPrintingCost)
+            //            {
+            //                if (thing.nutrition)
+            //                {
+            //                    thing.amount = 0;
+            //                }
+            //            }
+            //        }
+            //    }
+            //    else if (ModChecker.HasATR())
+            //    {
+            //        if (ATR.IsATAndroid(newAndroid))
+            //        {
 
-                        foreach (ThingOrderRequest thing in finalCalculatedPrintingCost)
-                        {
-                            if (thing.nutrition)
-                            {
-                                thing.amount = 0;
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Warning("ATR mod not loaded");
-            }
+            //            foreach (ThingOrderRequest thing in finalCalculatedPrintingCost)
+            //            {
+            //                if (thing.nutrition)
+            //                {
+            //                    thing.amount = 0;
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Log.Warning("ATR mod not loaded");
+            //}
 
             if (AndroidsModSettings.Instance.expensiveAndroids)
             {
@@ -1142,21 +1146,22 @@ namespace Androids
                                              where bs != null
                                              select bs)
             {
-                foreach (KeyValuePair<SkillDef, int> current2 in current.skillGains)
+                foreach (SkillGain current2 in current.skillGains)
                 {
-                    if (current2.Key == sk)
+                    if (current2.skill == sk)
                     {
-                        num += (float)current2.Value * Rand.Range(1f, 1.4f);
+                        num += (float)current2.amount * Rand.Range(1f, 1.4f);
                     }
                 }
             }
             for (int i = 0; i < pawn.story.traits.allTraits.Count; i++)
             {
-                int num2 = 0;
-                if (pawn.story.traits.allTraits[i].CurrentData.skillGains.TryGetValue(sk, out num2))
-                {
-                    num += (float)num2;
-                }
+                //int num2 = 0;
+                //if (pawn.story.traits.allTraits[i].CurrentData.skillGains.TryGetValue(sk, out num2))
+                //{
+                //    num += (float)num2;
+                //}
+                pawn.story.traits.allTraits[i].CurrentData.skillGains.FindAll(gain => gain.skill == sk).ForEach(gain => num += gain.amount);
             }
             //float num3 = 1f;
             //num *= num3;

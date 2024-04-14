@@ -72,10 +72,10 @@ namespace Androids
                     int_PawnRenderer_GetPawn = type.GetField("pawn", BindingFlags.NonPublic | BindingFlags.GetField | BindingFlags.Instance);
 
                     //Patch: PawnRenderer.RenderPawnInternal as Postfix
-                    harmony.Patch(type.GetMethod("RenderPawnInternal", BindingFlags.NonPublic | BindingFlags.Instance,
-                        Type.DefaultBinder, CallingConventions.Any,
-                        new Type[] { typeof(Vector3), typeof(float), typeof(bool), typeof(Rot4), typeof(RotDrawMode), typeof(PawnRenderFlags) }, null),
-                        null, new HarmonyMethod(typeof(HarmonyPatches).GetMethod(nameof(Patch_PawnRenderer_RenderPawnInternal))));
+                    //harmony.Patch(type.GetMethod("RenderPawnInternal", BindingFlags.NonPublic | BindingFlags.Instance,
+                    //    Type.DefaultBinder, CallingConventions.Any,
+                    //    new Type[] { typeof(Vector3), typeof(float), typeof(bool), typeof(Rot4), typeof(RotDrawMode), typeof(PawnRenderFlags) }, null),
+                    //    null, new HarmonyMethod(typeof(HarmonyPatches).GetMethod(nameof(Patch_PawnRenderer_RenderPawnInternal))));
                     /*harmony.Patch(type.GetMethod("RenderPawnInternal", BindingFlags.NonPublic | BindingFlags.Instance,
                         Type.DefaultBinder, CallingConventions.Any,
                         new Type[] { typeof(Vector3), typeof(float), typeof(bool), typeof(Rot4), typeof(Rot4), typeof(RotDrawMode), typeof(bool), typeof(bool), typeof(bool) }, null),
@@ -1182,7 +1182,7 @@ namespace Androids
             if(!AndroidsModSettings.Instance.droidCompatibilityMode)
             {
                 if (
-                nd == NeedDefOf.Food || nd == NeedDefOf.Rest || nd == NeedDefOf.Joy ||
+                nd == NeedDefOf.Food || nd == NeedDefOf.Rest ||
                 nd == NeedsDefOf.Beauty || nd == NeedsDefOf.Comfort || nd == NeedsDefOf.RoomSize ||
                 nd == NeedsDefOf.Outdoors ||
                 (Need_Bladder != null && nd == Need_Bladder) || (Need_Hygiene != null && nd == Need_Hygiene))
@@ -1198,61 +1198,61 @@ namespace Androids
         /// <summary>
         /// Adds glowing eyes to anything mechanical.
         /// </summary>
-        public static void Patch_PawnRenderer_RenderPawnInternal(ref PawnRenderer __instance, Vector3 rootLoc, float angle, bool renderBody, Rot4 bodyFacing, RotDrawMode bodyDrawType, PawnRenderFlags flags)
-        {
-            //typeof(Vector3), typeof(float), typeof(bool), typeof(Rot4), typeof(RotDrawMode), typeof(PawnRenderFlags)
-            if (flags.FlagSet(PawnRenderFlags.Invisible))
-            {
-                return;
-            }
+        //public static void Patch_PawnRenderer_RenderPawnInternal(ref PawnRenderer __instance, Vector3 rootLoc, float angle, bool renderBody, Rot4 bodyFacing, RotDrawMode bodyDrawType, PawnRenderFlags flags)
+        //{
+        //    //typeof(Vector3), typeof(float), typeof(bool), typeof(Rot4), typeof(RotDrawMode), typeof(PawnRenderFlags)
+        //    if (flags.FlagSet(PawnRenderFlags.Invisible))
+        //    {
+        //        return;
+        //    }
 
-            if (__instance != null && AndroidsModSettings.Instance.androidEyeGlow)
-            {
-                Pawn pawn = PawnRenderer_GetPawn_GetPawn(__instance);
+        //    if (__instance != null && AndroidsModSettings.Instance.androidEyeGlow)
+        //    {
+        //        Pawn pawn = PawnRenderer_GetPawn_GetPawn(__instance);
 
-                //Draw glowing eyes.                                                                                Null check galore!
-                if (pawn != null && pawn.IsAndroid() && !pawn.Dead && !flags.FlagSet(PawnRenderFlags.HeadStump) &&  ((!flags.FlagSet(PawnRenderFlags.Portrait) && pawn?.jobs?.curDriver != null ? !pawn.jobs.curDriver.asleep : flags.FlagSet(PawnRenderFlags.Portrait)) || flags.FlagSet(PawnRenderFlags.Portrait)))
-                {
-                    Quaternion quat = Quaternion.AngleAxis(angle, Vector3.up);
+        //        //Draw glowing eyes.                                                                                Null check galore!
+        //        if (pawn != null && pawn.IsAndroid() && !pawn.Dead && !flags.FlagSet(PawnRenderFlags.HeadStump) &&  ((!flags.FlagSet(PawnRenderFlags.Portrait) && pawn?.jobs?.curDriver != null ? !pawn.jobs.curDriver.asleep : flags.FlagSet(PawnRenderFlags.Portrait)) || flags.FlagSet(PawnRenderFlags.Portrait)))
+        //        {
+        //            Quaternion quat = Quaternion.AngleAxis(angle, Vector3.up);
 
-                    //Get base offset.
-                    Vector3 baseHeadOffset = rootLoc;
-                    if (bodyFacing != Rot4.North)
-                    {
-                        baseHeadOffset.y += 0.0281250011f;
-                        rootLoc.y += 0.0234375f;
-                    }
-                    else
-                    {
-                        baseHeadOffset.y += 0.0234375f;
-                        rootLoc.y += 0.0281250011f;
-                    }
+        //            //Get base offset.
+        //            Vector3 baseHeadOffset = rootLoc;
+        //            if (bodyFacing != Rot4.North)
+        //            {
+        //                baseHeadOffset.y += 0.0281250011f;
+        //                rootLoc.y += 0.0234375f;
+        //            }
+        //            else
+        //            {
+        //                baseHeadOffset.y += 0.0234375f;
+        //                rootLoc.y += 0.0281250011f;
+        //            }
 
-                    Vector3 headOffset = quat * __instance.BaseHeadOffsetAt(bodyFacing);
+        //            Vector3 headOffset = quat * __instance.BaseHeadOffsetAt(bodyFacing);
 
-                    //Finalize offset.
-                    Vector3 eyeOffset = baseHeadOffset + headOffset + new Vector3(0f, 0.01f, 0f);
+        //            //Finalize offset.
+        //            Vector3 eyeOffset = baseHeadOffset + headOffset + new Vector3(0f, 0.01f, 0f);
 
-                    //Render eyes.
-                    if (bodyFacing != Rot4.North)
-                    {
-                        //Is not the back.
-                        Mesh headMesh = MeshPool.humanlikeHeadSet.MeshAt(bodyFacing);
+        //            //Render eyes.
+        //            if (bodyFacing != Rot4.North)
+        //            {
+        //                //Is not the back.
+        //                Mesh headMesh = MeshPool.humanlikeHeadSet.MeshAt(bodyFacing);
 
-                        if (bodyFacing.IsHorizontal)
-                        {
-                            //Side
-                            GenDraw.DrawMeshNowOrLater(headMesh, eyeOffset, quat, EffectTextures.GetEyeGraphic(false, pawn.story.HairColor.SaturationChanged(0.6f)).MatSingle, flags.FlagSet(PawnRenderFlags.Portrait));
-                        }
-                        else
-                        {
-                            //Front
-                            GenDraw.DrawMeshNowOrLater(headMesh, eyeOffset, quat, EffectTextures.GetEyeGraphic(true, pawn.story.HairColor.SaturationChanged(0.6f)).MatSingle, flags.FlagSet(PawnRenderFlags.Portrait));
-                        }
-                    }
-                }
-            }
-        }
+        //                if (bodyFacing.IsHorizontal)
+        //                {
+        //                    //Side
+        //                    GenDraw.DrawMeshNowOrLater(headMesh, eyeOffset, quat, EffectTextures.GetEyeGraphic(false, pawn.story.HairColor.SaturationChanged(0.6f)).MatSingle, flags.FlagSet(PawnRenderFlags.Portrait));
+        //                }
+        //                else
+        //                {
+        //                    //Front
+        //                    GenDraw.DrawMeshNowOrLater(headMesh, eyeOffset, quat, EffectTextures.GetEyeGraphic(true, pawn.story.HairColor.SaturationChanged(0.6f)).MatSingle, flags.FlagSet(PawnRenderFlags.Portrait));
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
         public static void Patch_Need_Food_Starving_Get(ref Need_Food __instance, ref bool __result)
         {
