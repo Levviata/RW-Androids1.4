@@ -1178,10 +1178,10 @@ namespace Androids
             //Make Android-like if not a Android.
             if (currentPawnKindDef.race != ThingDefOf.ChjAndroid)
             {
-                //HarmonyPatches.bypassGenerationOfUpgrades = true;
+                HarmonyPatches.bypassGenerationOfUpgrades = true;
                 pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(currentPawnKindDef, androidPrinter.Faction, RimWorld.PawnGenerationContext.NonPlayer,
                 -1, true, false, false, false, false, 0f, false, false, true, true, false, false, false, true, fixedGender: gender));
-               // HarmonyPatches.bypassGenerationOfUpgrades = false;
+                HarmonyPatches.bypassGenerationOfUpgrades = false;
 
                 //Give random skin and hair color.
                 AndroidUtility.Androidify(pawn);
@@ -1194,10 +1194,10 @@ namespace Androids
             }
             else
             {
-                //HarmonyPatches.bypassGenerationOfUpgrades = true;
+                HarmonyPatches.bypassGenerationOfUpgrades = true;
                 pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(currentPawnKindDef, androidPrinter.Faction, RimWorld.PawnGenerationContext.NonPlayer,
                 -1, true, false, false, false, false, 0f, false, false, true, true, false, false, false, true, fixedGender: gender, fixedBiologicalAge: 20, fixedChronologicalAge: 20));
-                //HarmonyPatches.bypassGenerationOfUpgrades = false;
+                HarmonyPatches.bypassGenerationOfUpgrades = false;
             }
 
             //Destroy all equipment and items in inventory.

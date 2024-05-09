@@ -16,7 +16,7 @@ namespace Androids
         {
             if ( p.health.hediffSet.HasHediff(HediffDefOf.ChjAndroidLike) &&( p.ideo.Ideo.HasMeme(DefDatabase<MemeDef>.GetNamed("Transhumanist")) || p.story.traits.HasTrait(RimWorld.TraitDefOf.Transhumanist)))
             {
-                Log.Warning("Transhumanist thought active");
+               //Log.Warning("Transhumanist thought active");
                 return ThoughtState.ActiveAtStage(0);
             }
 

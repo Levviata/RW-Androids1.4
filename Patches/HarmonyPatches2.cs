@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using RimWorld;
+using RimWorld.Planet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,4 +24,19 @@ namespace Androids
             }
         }
     }
+    //[HarmonyPatch(typeof(SocialCardUtility))]
+    //[HarmonyPatch("ShouldShowPawnRelations")]
+
+    //internal static class SocialCardUtilityPatch
+    //{
+    //    public static bool Prefix(ref bool __result, Pawn pawn, Pawn selPawnForSocialInfo)
+    //    {
+    //        Log.Warning("SocialCardUtilityPatch");
+    //        Log.Warning("selPawnForSocialInfo:" + pawn.Name.ToStringFull);
+    //        Log.Warning("relations:" + pawn.relations.hidePawnRelations);
+    //        Log.Warning("animal:" + pawn.RaceProps.Animal);
+    //        __result = ((!pawn.RaceProps.Animal || !pawn.Dead || pawn.Corpse != null) && pawn.Name != null && !pawn.Name.Numerical && !pawn.relations.hidePawnRelations && !selPawnForSocialInfo.relations.hidePawnRelations && pawn.relations.everSeenByPlayer);
+    //        return false;
+    //    }
+    //}
 }

@@ -70,10 +70,10 @@ namespace Androids
                 }
                 //pawnBeingCrafted.story.headType = new HeadTypeDef();
                 //pawnBeingCrafted.story.headType.gender = Gender.Male;
-             //   pawnBeingCrafted.story.headType.graphicPath = "Things/ChjDroid/Heads/";
+                //   pawnBeingCrafted.story.headType.graphicPath = "Things/ChjDroid/Heads/";
 
                 //pawnBeingCrafted.story.melanin = 1f;
-               // pawnBeingCrafted.story.headType.gender = pawnBeingCrafted.gender;
+                // pawnBeingCrafted.story.headType.gender = pawnBeingCrafted.gender;
 
                 //if (spawnProperties != null && spawnProperties.generateHair)
                 //{
@@ -94,6 +94,7 @@ namespace Androids
                 //    //pawnBeingCrafted.story.hairColor = new UnityEngine.Color(1f, 1f, 1f, 1f);
                 //    pawnBeingCrafted.story.hairDef = DefDatabase<HairDef>.GetNamed("Shaved");
                 //}
+                //pawnBeingCrafted.ShouldHaveIdeo = false;
                 pawnBeingCrafted.style.beardDef = BeardDefOf.NoBeard;
                 pawnBeingCrafted.style.BodyTattoo = TattooDefOf.NoTattoo_Body;
                 pawnBeingCrafted.style.FaceTattoo = TattooDefOf.NoTattoo_Face;
@@ -284,9 +285,9 @@ namespace Androids
                     pawnKind,
                     faction,
                     fixedBiologicalAge: 0,
-                    fixedChronologicalAge: 0
+                    fixedChronologicalAge: 0,
+                    canGeneratePawnRelations: false
                     ));
-
             return pawnBeingCrafted;
         }
 
